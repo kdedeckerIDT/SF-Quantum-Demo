@@ -1,0 +1,129 @@
+
+
+//@import "../node_modules/bootstrap/scss/mixins/banner";
+//@include bsBanner("");
+
+
+// scss-docs-start import-stack
+// Configuration
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+    // scss-docs-start color-variables, IDT palette
+    //$blue:    #003B5C;
+    $blue:    #004b87;
+    $indigo:  #004b87;
+    $purple:  #003B5C;
+    $orange:  #ff6900;
+    $yellow:  #dbe442;
+    $green:   #BFCC80;
+    $cyan:    #48a9c5;
+
+    $enable-dark-mode: false;
+
+@import "../node_modules/bootstrap/scss/variables";
+//@import "../node_modules/bootstrap/scss/variables-dark";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+// @import "../node_modules/bootstrap/scss/utilities";
+
+// Layout & components
+@import "../node_modules/bootstrap/scss/root";
+//@import "../node_modules/bootstrap/scss/reboot";
+//@import "../node_modules/bootstrap/scss/type";
+//@import "../node_modules/bootstrap/scss/images";
+//@import "../node_modules/bootstrap/scss/containers";
+//@import "../node_modules/bootstrap/scss/grid";
+//@import "../node_modules/bootstrap/scss/tables";
+@import "../node_modules/bootstrap/scss/forms";
+//@import "../node_modules/bootstrap/scss/buttons";
+/*
+@import "../node_modules/bootstrap/scss/transitions";
+@import "../node_modules/bootstrap/scss/dropdown";
+@import "../node_modules/bootstrap/scss/button-group";
+@import "../node_modules/bootstrap/scss/nav";
+@import "../node_modules/bootstrap/scss/navbar";
+*/
+//@import "../node_modules/bootstrap/scss/card";
+/*
+@import "../node_modules/bootstrap/scss/accordion";
+@import "../node_modules/bootstrap/scss/breadcrumb";
+@import "../node_modules/bootstrap/scss/pagination";
+@import "../node_modules/bootstrap/scss/badge";
+@import "../node_modules/bootstrap/scss/alert";
+@import "../node_modules/bootstrap/scss/progress";
+@import "../node_modules/bootstrap/scss/list-group";
+@import "../node_modules/bootstrap/scss/close";
+@import "../node_modules/bootstrap/scss/toasts";
+@import "../node_modules/bootstrap/scss/modal";
+@import "../node_modules/bootstrap/scss/tooltip";
+@import "../node_modules/bootstrap/scss/popover";
+@import "../node_modules/bootstrap/scss/carousel";
+@import "../node_modules/bootstrap/scss/spinners";
+@import "../node_modules/bootstrap/scss/offcanvas";
+@import "../node_modules/bootstrap/scss/placeholders";
+*/
+
+// Helpers
+//@import "../node_modules/bootstrap/scss/helpers";
+
+// Utilities
+//@import "../node_modules/bootstrap/scss/utilities/api";
+// scss-docs-end import-stack
+
+
+// IDT custom overrides
+html {
+    font-size:16px; // Override Bootstrap 3
+}
+
+.form-floating>label {
+    font-weight: normal;
+}
+
+.form-check > input,
+.form-check > label
+ {
+    cursor: pointer;
+}
+
+.form-switch-lg {
+    padding-left:5.5em;
+    display: flex;
+    align-items:center;
+
+    & label {
+        margin-left:.75em;
+    }
+
+    & .form-check-input{
+        height:2em;
+        width:4em;
+        margin-left:-5.5em;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+
+        &:before {
+            transition:.25s all;
+            color:rgba(280, 0, 0, 0.5);
+            font-size:.85em;
+            content:'No';
+            transform: translateX(.75em);
+        }
+
+        &:checked:before {
+            content:'Yes';
+            color:#fff;
+            transform: translateX(-.75em);
+        }
+    }
+
+    
+}
+
+.form-check-group label {
+    font-weight:normal;
+}

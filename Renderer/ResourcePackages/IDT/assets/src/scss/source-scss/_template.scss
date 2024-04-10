@@ -1,0 +1,665 @@
+/*
+===================================
+Website header
+===================================
+*/
+#main-header {
+    padding-top:10px;
+    padding-bottom:10px;
+    
+    & > .container {
+        display: flex;
+        align-items: center;
+    }
+}
+
+#main-logo-link {
+    text-decoration: none!important;
+    display: block;
+    width: 100%;
+    max-width:122px;
+    margin-left:20px;
+}
+
+#main-logo {
+    max-width:125px;
+}
+
+/* =====================================================
+Main Navigation Style
+======================================================== */
+
+#main-nav-btn-toggle {
+    position: relative;
+    width:40px;
+    height:40px;
+    background-color: transparent;
+    color:#fff;
+    text-decoration: none;
+    border-radius: .5em;
+    text-shadow: none;
+    font-size: 1.5em;
+    font-size: 1.1em;
+    border: 0;
+    transition: all .2s;
+
+    &[aria-expanded="true"] {
+        font-size: .85em;
+        padding:10px 12px;
+    }
+
+    &:hover, &:active, &:focus, &[aria-expanded="true"] {
+        background-color:$sky_light;
+    }
+
+    // State animations for hamburger button
+    &[aria-expanded="true"] > .nav-hamburger {
+        transform: rotateZ(90deg);
+        height:1.75em;
+    }
+    &[aria-expanded="true"] > .nav-hamburger > .nav-hamburger__line:first-of-type {
+        opacity: 0;
+        margin:0;
+        height:0;
+    }
+
+    &[aria-expanded="true"] > .nav-hamburger > .nav-hamburger__line:nth-child(2) {
+        background-color: transparent;
+        border:2px solid #fff;
+        height: 24px;
+        margin:0;
+    }
+
+    &[aria-expanded="true"] > .nav-hamburger > .nav-hamburger__line:nth-child(3) {
+        height:8px;
+        margin:0;
+    }
+}
+
+.nav-hamburger {
+    position: absolute;
+    margin: auto;
+    top: 0;right: 0;bottom: 0;left: 0;
+    width: 1.5em;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__line {
+        display: block;
+        background-color:#fff;
+        margin-top:6px;
+        height: 3px;
+    
+        &:first-of-type {
+            margin-top:0;
+        }
+    }
+}
+
+$zIndexCounter:9000;
+#main-nav-panel-container {
+    position: fixed;
+    left:0;
+    top:0;
+    bottom: 0;
+    right:0;
+    margin:auto;
+    z-index:$zIndexCounter;
+    display: flex;
+    align-items: stretch;
+    overflow-y:auto;
+}
+
+@mixin menuDropShadow {
+    box-shadow: 4px 8px 12px rgba(0,0,0,.3);
+}
+
+
+.main-nav-panel {
+    background-color:$wave;
+    margin:0;
+    transition: all 350ms ease-in-out;
+    //display: flex;
+    //flex-direction: column;
+    overflow-y:auto;
+
+    @include menuDropShadow();
+
+    &.closed {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    &.open {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    & ul {
+        list-style: none;
+        margin:0;
+    }
+
+    & ul > li {
+        margin:0;
+    }
+}
+
+#main-nav-search {
+    margin:8px 45px 10px 10px;
+    flex-direction: initial;
+    min-height: 30px;
+    position: relative;
+    max-width:300px;
+
+    & > .site-search__input {
+        text-align:left;
+        width:100%;
+    }
+
+    & > .fa-search::before {
+        position: relative;
+        top: 4px;
+        right: 8px;
+    }
+}
+
+.main-nav-panel-content {
+    display: flex;
+    align-items: stretch;
+    flex-grow: 1;
+    min-height: calc(100% - 48px); // Not sure why this needs to be 48px rather than the hieght of the search bar (30px)
+}
+
+#menu-level-1 {
+    max-width: none;
+    flex-grow: 1;
+
+    & > .main-nav-parent-links {
+        display: block;
+        max-width: none;
+        visibility: visible;
+    }
+}
+
+.main-nav-panel-menu {
+    position: relative;
+    z-index: calc($zIndexCounter - 1);
+    background-color:$wave;
+    @include menuDropShadow();
+}
+
+.main-nav-parent-links {
+    $indicatorWidth: 10px;
+    display: none;
+    visibility: hidden;
+
+    padding-left:0;
+    font-size:1.3em;
+
+    max-width: 0px;
+
+    &.menu-active {
+        display: block;
+        visibility: visible;
+        animation-name: reveal-menu;
+        animation-duration: .4s;
+        //animation-fill-mode: forwards;
+        max-width: none;
+    }
+
+    &__item {
+        border-top:1px solid rgba(255,255,255,.4);
+        display: block;
+        position: relative;
+
+        &:last-of-type {
+            border-bottom:1px solid rgba(255,255,255,.4);
+        }
+
+        & > a:not(.btn):not(.text-peridot) {
+            color:#fff;
+            font-weight: 300;
+            text-decoration: none;
+            display: block;
+            padding-top:5px; 
+            padding-bottom:5px;
+            padding-left:($indicatorWidth * 2);
+            padding-right:80px;
+            transition: all .3s;
+    
+            &:hover, &:focus, &:active, &.active {
+                background-color: $sky_light;
+                color:$wave_dark;
+                left:$indicatorWidth;
+            }
+
+            // Indicators
+            &::before {
+                content:'';
+                display: block;
+                width:$indicatorWidth;
+                height:100%;
+                position: absolute;
+                left:0;
+                top:0;
+                bottom:0;
+                margin:auto;
+                background-color:transparent;
+            }
+
+            &:hover, &:focus, &:active, &.active {
+                &::before {
+                    background-color: $sky;
+                    left:calc(-1 * $indicatorWidth);
+                }
+            }
+        }
+
+        & .btn-toggle {
+            position: absolute; 
+            top:0; right:0; bottom:0; left:auto;
+            min-height:none;
+            min-width:45px;
+            border-radius:0;
+            margin-left:0;
+            margin-right:0;
+            background-color:$ocean;
+            color:#fff;
+            padding-left:8px; padding-right:8px;
+
+            &:before { // Plus/minus sign
+                top:0;
+                bottom:0;
+                margin:auto;
+                width:auto;
+                height:auto;
+            }
+
+            &[aria-expanded=true],
+            &:focus,
+            &:hover,
+            &:active {
+                background-color: $sky;
+            }
+        }
+
+        & .hover-reveal {
+            &:hover, &:focus, &:active, &.active, &[aria-expanded="true"] {
+                & .reveal-content {
+                    animation-duration: 1.5s;
+                    margin-left:3px;
+                }
+            }
+        }
+
+        & .reveal-content {
+            line-height: 1.15;
+            margin-left:0;
+        }
+    }
+}
+
+@keyframes reveal-menu {
+    from {
+        max-width: 0px;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+    to {
+        max-width:1200px;
+        overflow-y: auto;
+        white-space: normal;
+    }
+}
+
+.main-nav-panel-flyout {
+    position: relative;
+    z-index: calc($zIndexCounter - 2);
+    background-color:$sky;
+    @include menuDropShadow();
+    overflow-x: hidden;
+    display: none;
+    max-width:0px;
+
+    &.menu-active {
+        display: block;
+        visibility: visible;
+        animation-name: reveal-menu;
+        animation-duration: .4s;
+        //animation-fill-mode: forwards;
+    }
+
+    &:nth-of-type(2) {
+        z-index: calc($zIndexCounter - 3);
+    }
+
+    &:nth-of-type(3) {
+        z-index: calc($zIndexCounter - 4);
+    }
+
+    &:nth-of-type(4) {
+        z-index: calc($zIndexCounter - 5);
+    }
+}
+
+.flyout-mega-menu {
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width:50svw;
+    padding-top:20px;
+    position: relative;
+    min-height: 100%;
+    max-width: 0px;
+    visibility: hidden;
+    display: none;
+
+    &.menu-active {
+        display: flex;
+        visibility: visible;
+        animation-name: reveal-menu;
+        animation-duration: .4s;
+        animation-fill-mode: forwards;
+    }
+
+    @media screen and (min-width: 2000px) {
+        width:1630px;
+    }
+
+    & > * {
+        flex-basis:50%;
+    }
+
+    & > ul.flyout-menu {
+        padding-left:8px;
+
+        & > li {
+            border-left:0;
+        }
+    }
+}
+
+ul.flyout-menu {
+    padding-left:0;
+    line-height: 1.1;
+    margin-bottom:20px;
+    // border-bottom:1px solid $wave;
+    
+    & a:not(.btn):not(.peridot-text) {
+        text-decoration:none;
+        color:#fff;
+        border-bottom:1px solid #ccc;
+        transition:all .3s;
+
+        &:hover, &:focus, &:active {
+            color:#fff;
+            background-color:$wave;
+            transform:translateX(5px);
+        }
+    }
+
+    & .btn-toggle {
+        &.collapsing {
+            min-height: 22px; // correct transition animation issue with button
+        }
+
+        &.show {
+            border:0;
+            background-color:$wave;
+            &:before {
+                color:#fff;
+            }
+        }
+        &:before {
+            color:$wave;
+        }
+    }
+
+    & ul {
+        padding-left:0;
+        margin-left:12px;
+    }
+
+    & li {
+        position: relative;
+
+        & > a,
+        & > span {
+            display: inline-block;
+            padding:5px 8px 5px 8px;
+            margin-left:21px;
+            font-size:1.1em;
+        }
+    }
+}
+
+.flyout-mega-heading {
+    margin-left:10px;
+}
+
+#main-nav-close {
+    position: absolute;
+    right:10px;
+    top:10px;
+    padding:12px;
+    transition: all 150ms;
+    border:1px solid transparent;
+    border-radius: 7px;
+    text-align: middle;
+    background-color:transparent;
+
+    &:before,
+    &:after {
+        position: absolute;
+        top:0; left:0; bottom:0; right:0;
+        margin: auto;
+        content:'';
+        display: block;
+        width:2px;
+        height:15px;
+        background-color:#fff;
+        transition: all 150ms;
+    }
+
+    &:before {
+        transform: rotate(45deg);
+    }
+
+    &:after {
+        transform:rotate(-45deg);
+    }
+
+    &:hover, &:active, &:focus {
+        background-color:$sky;
+        border-color: #ccc;
+    }
+
+    &:hover:before, &:active:before, &:focus:before,
+    &:hover:after, &:active:after, &:focus:after {
+        background-color: #fff;
+    }
+}
+
+#main-nav-bg {
+    background-color:rgba(0, 0, 0, .5);
+    position: absolute;
+    top:0; right:0; bottom:0; left:0;
+    margin: auto;
+    transition: all 150ms ease-in-out;
+    z-index: -1;
+}
+
+#main-nav-panel.closed + #main-nav-bg {
+    opacity:0;
+} 
+
+#main-nav-panel.open + #main-nav-bg {
+    opacity: 1;
+}
+
+// Main nav search styles
+.main-nav-search {
+    &__container {
+        display: block;
+        width:100%;
+        padding:30px;
+    }
+}
+
+/* =====================================================
+Header controls
+======================================================== */
+#main-header-controls {
+    display: flex;
+    flex-grow:7;
+    justify-content: end;
+    align-items: center;
+
+    & > * {
+        margin-left:12px;
+    }
+
+    & > :first-child {
+        margin-left:0;
+    }
+}
+
+// Site search
+.site-search {
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: $wave_dark;
+    border:1px solid #fff;
+    color:#fff;
+    border-radius: 20px;
+    overflow: hidden;
+
+    @mixin revealSiteSearch {
+        max-width:500px;
+        visibility: visible;
+        padding-left:15px;
+        padding-right:15px;
+        opacity: 1;
+    }
+
+    //&:hover, &:focus, &:active, 
+    &.active {
+        & > .site-search__input {
+            @include revealSiteSearch()
+        }
+    }
+    
+
+    &__input,
+    &__button {
+        background:transparent;
+        border:0;
+        outline: 0;
+        color:#fff;
+    }
+
+    &__input {
+        font-size:1.1em;
+        line-height: 1.1;
+        padding:3px 0;
+        opacity: 0;
+        visibility: hidden;
+        max-width:0;
+        transition:.5s all;
+
+        //&:hover, &:focus, &:active, 
+        &.active {
+            @include revealSiteSearch()
+        }
+    }
+
+    &__button {
+        background-color: $wave_dark;
+        transition:.2s all;
+        border-radius: 20px;
+        font-size:1.3em;
+        padding:4px 10px;
+        position: relative;
+
+        &.active ~ .site-search__input {
+            @include revealSiteSearch()
+        }
+
+        &:hover, &:focus, &:active, &.active {
+            background-color:$sky;
+        }
+
+        & > span {
+            position: relative;
+            top:-1px;
+        }
+    }
+
+    &__active-clear {
+        background-color: transparent;
+        border:0;
+        outline:0;
+        color:$sky;
+        border-radius:3px;
+        padding-left:4px;
+        padding-right:4px;
+        height:21px;
+        width:21px;
+        opacity:0;
+        position: absolute;
+        margin:auto;
+        right: 35px;
+        top: 0;
+        bottom:0;
+        transition: all 150ms;
+
+        &.active {
+            opacity:.75;
+        }
+
+        &:hover, &:focus, &:active {
+            color:#fff;
+            background-color: $sky;
+        }
+    }
+}
+
+// Header buttons
+.fa.header-btn {
+    color:#fff;
+    font-size:1.5em;
+    width:40px;
+    height:40px;
+    text-align: center;
+    padding:0;
+    transition:all .25s;
+    border:1px solid transparent;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: $sky;
+        border-color: #fff;
+    }
+}
+
+// Account details button + drop-down
+.account-details-control {
+    &__btn {
+        color:#fff;
+        background-color:$wave_dark;
+        font-size:1.3em;
+        border:1px solid #fff;
+        height:40px;
+
+        &:after {
+            border:0;
+            display: none;
+        }
+
+        &:hover, &:focus, &:active, &.active {
+            background-color: $sky;
+            border-color: #fff;
+        }
+    }
+}

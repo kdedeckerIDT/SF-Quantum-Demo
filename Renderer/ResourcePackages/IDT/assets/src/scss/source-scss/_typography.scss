@@ -1,0 +1,776 @@
+/*
+==========
+TYPOGRAPHY
+==========
+*/
+
+.disclaimer-text {
+	font-size:.8em;
+	color:#888;
+	line-height: 1.3;
+}
+
+	.disclaimer-text a,
+	.disclaimer-text a:link {
+		color:$sky;
+	}
+
+	.disclaimer-text a:hover,
+	.disclaimer-text a:active,
+	.disclaimer-text a:focus {
+		color:$sky_light;
+	}
+
+// Inverted/white text color scheme (for dark backgrounds/photos)
+
+	.white-text {
+		color:#fff;
+	}
+
+	.white-text a,
+	.white-text a:link,
+	.white-text a:visited {
+		color:$sky_light;
+		text-decoration:underline;
+	}
+
+	.white-text a:active,
+	.white-text a:focus,
+	.white-text a:hover {
+		color:$fog_light;
+	}
+
+	@media screen and (min-width: 992px) {
+		.white-text-lg {
+			color:#fff;
+		}
+
+		.white-text-lg a,
+		.white-text-lg a:link,
+		.white-text-lg a:visited {
+			color:$sky_light;
+			text-decoration:underline;
+		}
+
+		.white-text-lg a:active,
+		.white-text-lg a:focus,
+		.white-text-lg a:hover {
+			color:$fog_light;
+		}
+	}
+
+	@media screen and (max-width: 991px) {
+		.white-text-md {
+			color:#fff;
+		}
+
+		.white-text-md a,
+		.white-text-md a:link,
+		.white-text-md a:visited {
+			color:$sky_light;
+			text-decoration:underline;
+		}
+
+		.white-text-md a:active,
+		.white-text-md a:focus,
+		.white-text-md a:hover {
+			color:$fog_light;
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		.white-text-sm {
+			color:#fff;
+		}
+
+		.white-text-sm a,
+		.white-text-sm a:link,
+		.white-text-sm a:visited {
+			color:$sky_light;
+			text-decoration:underline;
+		}
+
+		.white-text-sm a:active,
+		.white-text-sm a:focus,
+		.white-text-sm a:hover {
+			color:$fog_light;
+		}
+	}
+
+.text-ocean {
+	color:$ocean;
+}
+.text-sky {
+	color:$sky;
+}
+.text-slate {
+	color:$slate;
+}
+.text-fog {
+	color:$fog;
+}
+.text-moss {
+	color:$moss;
+}
+.text-peridot {
+	color:$peridot;
+}
+.text-sunset {
+	color:$sunset;
+}
+.text-ocean-light {
+	color:$ocean_light;
+}
+.text-sky-light {
+	color:$sky_light;
+}
+.text-slate-light {
+	color:$slate_light;
+}
+.text-fog-light {
+	color:$fog_light;
+}
+.text-moss-light {
+	color:$moss_light;
+}
+.text-peridot-light {
+	color:$peridot_light;
+}
+.text-sunset-light {
+	color:$sunset_light;
+}
+.text-wave {
+	color:$wave;
+}
+.text-current {
+	color:$current;
+}
+.text-spring {
+	color:$spring;
+}
+
+// Large Pull-quote styles "big quote"
+    .big-quote-container {
+        max-width: 525px;
+        margin: 35px auto;
+    }
+
+    .big-quote-text {
+        line-height: 1.45;
+        font-size: 1.5em;
+        padding: 0 20px 0 30px;
+        position: relative;
+    }
+
+    .big-quote-text > p:last-of-type {
+        margin-bottom:12px;
+    }
+
+    .quotation-mark-left {
+        font-size: 105px;
+        line-height: 1;
+        position: absolute;
+        left: 0;
+        top: -20px;
+    }
+
+    .quotation-mark-right {
+        display: inline-block;
+        font-size: 70px;
+        position: relative;
+        top: 28px;
+        height: 1px;
+        overflow: visible;
+        line-height: 0;
+    }
+
+    .big-quote-attribution {
+        font-size: .88em;
+        text-align: right;
+        padding-right: 30px;
+    }
+
+// Text columns
+	[class*=text-col] {
+		column-gap:20px;
+	}
+
+
+	@media only screen and (min-width : 992px) {
+		.text-col-2-md {
+			column-count: 2;
+		}
+	}
+
+// Text weight helpers
+	.text-300 {
+		font-weight: 300!important;
+	}
+
+	.text-700 {
+		font-weight:700!important;
+	}
+
+	.text-900 {
+		font-weight: 900!important;
+	}
+
+
+// Alternate Typographic styles
+
+	// Variables for font-size calculations
+	$base-font-size: 1em; // 16px
+	$font-size-step: .35; // The step between each heading size will be compounded by this percentage
+
+	// Compound font-sizes through heading sizes (increase the font-size of a heading by the last heading size + the font-size step)
+	$h6-font-size:$base-font-size; // 16px
+	$h5-font-size:$base-font-size; // 16px
+	$h4-font-size:$base-font-size + ($base-font-size * $font-size-step); // + 35% from previous heading size
+	$h3-font-size:$h4-font-size + ($h4-font-size * $font-size-step); // + 35% from previous heading size
+	$h2-font-size:$h3-font-size + ($h3-font-size * $font-size-step); // + 35% from previous heading size
+	$h1-font-size:$h2-font-size + ($h2-font-size * $font-size-step); // + 35% from previous heading size
+
+	// Helper classes to increase/decrease font-size
+		.larger {
+			font-size: calc($base-font-size + ($base-font-size * ($font-size-step/2))); // ~16% larger
+		}
+
+		.smaller {
+			font-size: calc($base-font-size - ($base-font-size * ($font-size-step/2))); // ~16% smaller
+		}
+	
+	// Reset the weight of several headings to be normal weight
+		h1, h2:not(.lead), h3 {
+			font-weight:normal;	
+		}
+	
+	// Adjust the spacing of icon images for product-titles
+		.product_title img {
+			margin-top:13px;
+		}
+
+	// H1
+	h1,
+	.product_title h1  {
+		font-size:$h1-font-size;	
+	}
+		// H1 larger styles
+		h1.larger,
+		.product_title h1.larger {
+			font-size: calc($h1-font-size + (($h1-font-size - $h2-font-size)/2));
+		}
+
+		// H1 smaller styles
+		h1.smaller,
+		.product_title h1.smaller {
+			font-size: calc($h1-font-size - (($h1-font-size - $h2-font-size)/2));
+		}
+		
+
+		// "lead" styles following H1
+		h1+.lead,
+		.product_title +.lead {
+			margin-top:-11px;
+			font-size:25px;
+		}
+
+	
+	// H2
+	h2:not(.lead) 
+	{		
+		font-size: $h2-font-size;
+		line-height:1.1;
+	}
+
+		// H2 larger styles
+		h2.larger:not(.lead) 
+		{			
+			font-size: calc($h2-font-size + (($h2-font-size - $h3-font-size)/2));
+		}
+
+		// H2 smaller styles
+		h2.smaller:not(.lead) 
+		{			
+			font-size: calc($h2-font-size - (($h2-font-size - $h3-font-size)/2));
+		}
+
+	// H3
+	h3 
+	{		
+		font-size:$h3-font-size;
+		line-height:1.2;
+	}
+
+		// H3 larger styles
+		h3.larger 
+		{			
+			font-size: calc($h3-font-size + (($h3-font-size - $h4-font-size)/2));
+		}
+
+		// H3 smaller styles
+		h3.smaller 
+		{			
+			font-size: calc($h3-font-size - (($h3-font-size - $h4-font-size)/2));
+		}
+		
+
+	// H4
+	h4 
+	{		
+		font-size:$h4-font-size;
+		line-height:1.4;
+		margin:0 0 2px 0;
+	}
+
+		// H4 larger styles
+		h4.larger 
+		{			
+			font-size: calc($h4-font-size + (($h3-font-size - $h4-font-size)/2));
+		}
+
+		// H4 smaller styles
+		h4.smaller 
+		{			
+			font-size: calc($h4-font-size - (($h3-font-size - $h4-font-size)/2));
+		}
+
+	// H5
+	h5 
+	{		
+		font-size:$h5-font-size;
+		margin:0 0 2px 0;
+	}
+
+		// H5 larger styles
+		h5.larger 
+		{			
+			font-size: calc($h5-font-size + (($h4-font-size - $h5-font-size)/2));
+		}
+	
+	// H6
+	h6 
+	{		
+		font-size:$h6-font-size;
+		margin:0 0 2px 0;
+	}
+
+		// H6 larger styles
+		h6.larger 
+		{			
+			font-size: calc($h6-font-size + (($h4-font-size - $h6-font-size)/2));
+		}
+	
+	
+	@media screen and (max-width: 991px) {
+		h1, h2:not(.lead), h3 {
+			font-weight:normal;	
+		}
+		
+		.product_title img {
+			margin-top:16px;
+		}
+		
+		h1,
+		.product_title h1 {
+			font-size:3.8em;	
+		}
+		h1+.lead {
+			margin-top:-9px;
+			font-size:24px;
+		}
+		
+		h2:not(.lead) {
+			font-size: 3em;	
+		}
+	}
+	
+	@media screen and (max-width: 767px) {
+		.product_title img {
+			margin-top:16px;
+		}
+		
+		h1,
+		.product_title h1 {
+			font-size:3.2em;	
+		}
+		h2:not(.lead) {
+			font-size: 2.6em;	
+		}
+		h3 {
+			font-size:2em;
+		}
+		h4 {
+			font-size:1.6em;
+		}
+		h5 {
+			font-size:1.25em;
+		}
+	}
+
+	// Overwrite for Stock-Table H1 weight to make it closer to an H4
+	.stock-table h1 {
+		font-weight:bold;	
+	}
+
+
+// Homepage/landing page typographic styles
+//===================================================================================
+////		$h2-landing-font-size:($h3-font-size + ($h3-font-size * $font-size-step) * .8);
+////	
+////		// Reset the weight of several headings to be normal weight
+////		.landing-page h2, .landing-page h3 {
+////			font-weight:normal;	
+////		}
+////	
+////		// Adjust the spacing of icon images for product-titles
+////		.landing-page .product_title img {
+////			margin-top:13px;
+////		}
+////	
+////		// H1
+////		.landing-page h1,
+////		.landing-page .h1  {
+////			font-size:$h1-font-size;
+////			font-weight:300;
+////		}
+////			// H1 larger styles
+////			.landing-page h1.larger,
+////			.landing-page .h1.larger {
+////				font-size: $h1-font-size + (($h1-font-size - $h2-landing-font-size)/2);
+////			}
+////	
+////			// H1 smaller styles
+////			.landing-page h1.smaller,
+////			.landing-page .h1.smaller {
+////				font-size: $h1-font-size - (($h1-font-size - $h2-landing-font-size)/2);
+////			}
+////	
+////	
+////			// "lead" styles following H1
+////			.landing-page h1+.lead,
+////			.landing-page .product_title +.lead {
+////				margin-top:-11px;
+////				font-size:25px;
+////			}
+////	
+////	
+////		// H2
+////		.landing-page h2,
+////		.landing-page .h2 {
+////			font-size: $h2-landing-font-size;
+////			line-height:1.1;
+////			font-weight:bold;
+////			text-transform: uppercase;
+////			letter-spacing: .15em;
+////			text-align: center;
+////			margin-bottom: 30px;
+////		}
+////			.hero-content-wrapper_50-50 h2,
+////			.hero-content-wrapper_50-50 .h2 { // Specific layout widget overwrite
+////				text-align: left;
+////			}
+////	
+////			// H2 larger styles
+////			.landing-page h2.larger:not(.lead),
+////			.landing-page .h2.larger {
+////				font-size: $h2-landing-font-size + (($h2-landing-font-size - $h3-font-size)/2);
+////			}
+////	
+////			// H2 smaller styles
+////			.landing-page h2.smaller:not(.lead),
+////			.landing-page .h2.smaller {
+////				font-size: $h2-landing-font-size - (($h2-landing-font-size - $h3-font-size)/2);
+////			}
+////	
+////			.landing-page h2:not(.lead) {
+////				margin-top:60px;
+////			}
+////	
+////			.landing-page h2:not(.lead):first-child{
+////				margin-top:0;
+////			}
+////	
+////		// H3
+////		.landing-page h3,
+////		.landing-page .h3 {
+////		font-size:$h3-font-size;
+////		line-height:1.2;
+////		}
+////	
+////			// H3 larger styles
+////			.landing-page h3.larger,
+////			.landing-page .h3.larger {
+////				font-size: $h3-font-size + (($h3-font-size - $h4-font-size)/2);
+////			}
+////	
+////			// H3 smaller styles
+////			.landing-page h3.smaller,
+////			.landing-page .h3.smaller {
+////				font-size: $h3-font-size - (($h3-font-size - $h4-font-size)/2);
+////			}
+////	
+////	
+////		// H4
+////		.landing-page h4,
+////		.landing-page .h4 {
+////			font-size:$h4-font-size;
+////			line-height:1.4;
+////			margin:0 0 2px 0;
+////		}
+////	
+////		// H4 larger styles
+////			.landing-page h4.larger,
+////			.landing-page .h4.larger {
+////				font-size: $h4-font-size + (($h3-font-size - $h4-font-size)/2);
+////			}
+////	
+////			// H4 smaller styles
+////			.landing-page h4.smaller,
+////			.landing-page .h4.smaller {
+////				font-size: $h4-font-size - (($h3-font-size - $h4-font-size)/2);
+////			}
+////	
+////		// H5
+////		.landing-page h5,
+////		.landing-page .h5 {
+////			font-size:$h5-font-size;
+////			margin:0 0 2px 0;
+////		}
+////	
+////			// H5 larger styles
+////			.landing-page h5.larger,
+////			.landing-page .h5.larger {
+////				font-size: $h5-font-size + (($h4-font-size - $h5-font-size)/2);
+////			}
+////	
+////		// H6
+////		.landing-page h6,
+////		.landing-page .h6 {
+////			font-size:$h6-font-size;
+////			margin:0 0 2px 0;
+////		}
+////	
+////			// H6 larger styles
+////			.landing-page h6.larger,
+////			.landing-page .h6.larger {
+////				font-size: $h6-font-size + (($h4-font-size - $h6-font-size)/2);
+////			}
+////	
+////	
+////		@media screen and (max-width: 991px) {
+////			.landing-page h1,
+////			.landing-page .h1 {
+////				font-size:3.8em;	
+////			}
+////			.landing-page h1+.lead,
+////			.landing-page .h1+.lead {
+////				margin-top:-9px;
+////				font-size:24px;
+////			}
+////		}
+////	
+////		@media screen and (max-width: 767px) {
+////	
+////			.landing-page h1,
+////			.landing-page .h1 {
+////				font-size:3.2em;	
+////			}
+////			.landing-page h2:not(.lead),
+////			.landing-page .h2:not(.lead) {
+////				font-size: 2.6em;	
+////			}
+////			.landing-page h3,
+////			.landing-page .h3 {
+////				font-size:2em;
+////			}
+////			.landing-page h4,
+////			.landing-page .h4 {
+////				font-size:1.6em;
+////			}
+////			.landing-page h5,
+////			.landing-page .h5 {
+////				font-size:1.25em;
+////			}
+////		}
+
+// New 2020 Product page typographic styles
+//===================================================================================
+////	
+////		// Reset the weight of several headings to be normal weight
+////		.product-page h2, .product-page h3 {
+////			font-weight:normal;	
+////		}
+////	
+////	
+////		// H1
+////		.product-page h1,
+////		.product-page .h1  {
+////			font-size:$h1-font-size;
+////			font-weight:300;
+////		}
+////			// H1 larger styles
+////			.product-page h1.larger,
+////			.product-page .h1.larger {
+////				font-size: $h1-font-size + (($h1-font-size - $h2-font-size)/2);
+////			}
+////	
+////			// H1 smaller styles
+////			.product-page h1.smaller,
+////			.product-page .h1.smaller {
+////				font-size: $h1-font-size - (($h1-font-size - $h2-font-size)/2);
+////			}
+////	
+////	
+////			// "lead" styles following H1
+////			.product-page h1+.lead,
+////			.product-page .product_title +.lead {
+////				margin-top:-11px;
+////				font-size:25px;
+////			}
+////	
+////	
+////		// H2
+////		.product-page h2,
+////		.product-page .h2 {
+////			font-size:$h2-font-size;
+////			line-height:1.35;
+////			margin-bottom: 30px;
+////		}
+////	
+////		.product-page h2:not(.new-typography-override),
+////		.product-page .h2:not(.new-typography-override) {
+////			display:inline-block;
+////			background-color: $sky;
+////			color:#fff;
+////			padding:10px 25px;
+////			font-weight:300;
+////			text-transform:uppercase;
+////		}
+////	
+////			// H2 larger styles
+////			.product-page h2.larger:not(.lead),
+////			.product-page .h2.larger {
+////				font-size: $h2-font-size + (($h2-font-size - $h3-font-size)/2);
+////			}
+////	
+////			// H2 smaller styles
+////			.product-page h2.smaller:not(.lead),
+////			.product-page .h2.smaller {
+////				font-size: $h2-font-size - (($h2-font-size - $h3-font-size)/2);
+////			}
+////	
+////			.product-page h2:not(.lead) {
+////				margin-top:60px;
+////			}
+////	
+////			.product-page h2:not(.lead):first-child {
+////				margin-top:0;
+////			}
+////	
+////		// H3
+////		.product-page h3,
+////		.product-page .h3 {
+////			font-size:$h3-font-size;
+////			line-height:1.2;
+////		}
+////	
+////			// H3 larger styles
+////			.product-page h3.larger,
+////			.product-page .h3.larger {
+////				font-size: $h3-font-size + (($h3-font-size - $h4-font-size)/2);
+////			}
+////	
+////			// H3 smaller styles
+////			.product-page h3.smaller,
+////			.product-page .h3.smaller {
+////				font-size: $h3-font-size - (($h3-font-size - $h4-font-size)/2);
+////			}
+////	
+////	
+////		// H4
+////		.product-page h4,
+////		.product-page .h4 {
+////			font-size:$h4-font-size;
+////			line-height:1.4;
+////			margin:0 0 2px 0;
+////		}
+////	
+////		// H4 larger styles
+////			.product-page h4.larger,
+////			.product-page .h4.larger {
+////				font-size: $h4-font-size + (($h3-font-size - $h4-font-size)/2);
+////			}
+////	
+////			// H4 smaller styles
+////			.product-page h4.smaller,
+////			.product-page .h4.smaller {
+////				font-size: $h4-font-size - (($h3-font-size - $h4-font-size)/2);
+////			}
+////	
+////		// H5
+////		.product-page h5,
+////		.product-page .h5 {
+////			font-size:$h5-font-size;
+////			margin:0 0 2px 0;
+////		}
+////	
+////			// H5 larger styles
+////			.product-page h5.larger,
+////			.product-page .h5.larger {
+////				font-size: $h5-font-size + (($h4-font-size - $h5-font-size)/2);
+////			}
+////	
+////		// H6
+////		.product-page h6,
+////		.product-page .h6 {
+////			font-size:$h6-font-size;
+////			margin:0 0 2px 0;
+////		}
+////	
+////			// H6 larger styles
+////			.product-page h6.larger,
+////			.product-page .h6.larger {
+////				font-size: $h6-font-size + (($h4-font-size - $h6-font-size)/2);
+////			}
+////	
+////	
+////		@media screen and (max-width: 991px) {
+////			.product-page h1,
+////			.product-page .h1 {
+////				font-size:3.8em;	
+////			}
+////			.product-page h1+.lead,
+////			.product-page .h1+.lead {
+////				margin-top:-9px;
+////				font-size:24px;
+////			}
+////			.product-page h2:not(.lead),
+////			.product-page .h2:not(.lead) {
+////				font-size: 2.2em;	
+////			}
+////		}
+////	
+////		@media screen and (max-width: 767px) {
+////	
+////			.product-page h1,
+////			.product-page .h1 {
+////				font-size:3.2em;	
+////			}
+////			.product-page h2:not(.lead),
+////			.product-page .h2:not(.lead) {
+////				font-size: 2em;	
+////			}
+////			.product-page h3,
+////			.product-page .h3 {
+////				font-size:1.85em;
+////			}
+////			.product-page h4,
+////			.product-page .h4 {
+////				font-size:1.6em;
+////			}
+////			.product-page h5,
+////			.product-page .h5 {
+////				font-size:1.25em;
+////			}
+////		}
+

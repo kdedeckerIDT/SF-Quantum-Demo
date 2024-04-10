@@ -1,0 +1,676 @@
+/*
+=======================================
+FULL-BLEED WRAP BACKGROUNDS AND PADDING
+=======================================
+*/
+
+$wrapPadding: 60px 0;
+
+// Color Themes
+	.wrap--white {
+		background-color: #fff;
+		padding: $wrapPadding;
+	}
+	
+	.wrap--ocean {
+		background-color: $ocean;
+		color:#fff;
+		padding: $wrapPadding;
+	}
+		
+		.wrap--ocean a:not(.btn),
+		.wrap--ocean a:not(.btn):link, 
+		.wrap--ocean a:not(.btn):visited {
+			color:$peridot;
+		}
+		
+		.wrap--ocean a:not(.btn):active, 
+		.wrap--ocean a:not(.btn):hover,
+		.wrap--ocean a:not(.btn):focus {
+			color:$peridot_light;	
+		}
+		
+		.wrap--ocean .callout,
+		.wrap--ocean .figure_full {
+			color: #333;
+		}
+	
+	.wrap--ocean-light {
+		background-color:$ocean_light;
+		padding: $wrapPadding;
+	}
+	
+	.wrap--sky {
+		background-color: $sky;
+		color:#fff;
+		padding: $wrapPadding
+	}
+		
+		.wrap--sky a:not(.btn):active, 
+		.wrap--sky a:not(.btn):hover,
+		.wrap--sky a:not(.btn):focus {
+			color:$sky_light;	
+		}
+		
+		.wrap--sky .callout,
+		.wrap--sky .figure_full {
+			color: #333;
+		}
+	
+	.wrap--sky-light {
+		background-color:$sky_light;
+		padding: $wrapPadding;
+	}
+		
+		.wrap--sky-light a:not(.btn):active, 
+		.wrap--sky-light a:not(.btn):hover,
+		.wrap--sky-light a:not(.btn):focus {
+			color:$ocean_light;	
+		}
+
+		.wrap--sky-light .callout,
+		.wrap--sky-light .figure_full,
+		.wrap--sky-light .figure_split {
+			background-color:#fff;
+		}
+	
+	.wrap--wave {
+		background-color: $wave;
+		color:#fff;
+		padding: $wrapPadding;
+	
+			& a:not(.btn):not(.dropdown-item)//, & a:not(.btn):not(.dropdown-item):link,  & a:not(.btn):not(.dropdown-item):visited 
+			{
+				color:$peridot;
+			}
+			
+			& a:not(.btn):not(.dropdown-item):active, 
+			& a:not(.btn):not(.dropdown-item):hover,
+			& a:not(.btn):not(.dropdown-item):focus {
+				color:$peridot_light;	
+			}
+			
+			& .callout,
+			& .figure_full {
+				color: #333;
+			}
+
+			& .btn-primary {
+				background-color: $sunset;
+			}
+
+			& .btn-secondary {
+				background-color: $sky;
+
+				&:hover, &:focus, &:active, &.active {
+					color:$ocean;
+					background-color: $sky_light;
+				} 
+			}
+		}
+		// Alternate color styles for related content
+		.wrap--wave .related-content-container.wave-alt > div,
+		.wrap--wave .related-content-container.wave-alt > div:not(.callout):not(.RadDockZone) {
+			background-color:$wave_dark;
+			transition: all .3s;
+			color:#fff;
+			font-size:16px;
+			line-height:1.4;
+		}
+
+			.wrap--wave .related-content-container.wave-alt > div:hover,
+			.wrap--wave .related-content-container.wave-alt > div:hover:not(.callout):not(.RadDockZone) {
+				background-color: #fff;
+				color:#6d6e70;
+			}
+		
+		.wrap--wave .related-content-container.wave-alt > div h3,
+		.wrap--wave .related-content-container.wave-alt > div h3 > a {
+			color:#fff!important;
+			font-weight:bold;
+		}
+		
+		.wrap--wave .related-content-container.wave-alt > div p:last-child {
+			margin-bottom:0;
+		}
+			
+			.wrap--wave .related-content-container.wave-alt > div:hover h3,
+			.wrap--wave .related-content-container.wave-alt > div:hover h3 > a {
+				color:#004b87!important;
+			}
+
+	.wrap--current {
+		background-color: $current;
+		color:#fff;
+		padding: $wrapPadding;
+	}
+	
+		
+		.wrap--current a:not(.btn),  
+		.wrap--current a:not(.btn):link, 
+		.wrap--current a:not(.btn):visited {
+			color:$peridot;
+		}
+		
+		.wrap--current a:not(.btn):active, 
+		.wrap--current a:not(.btn):hover,
+		.wrap--current a:not(.btn):focus {
+			color:$peridot_light;	
+		}
+		
+		.wrap--current .callout,
+		.wrap--current .figure_full {
+			color: #333;
+		}
+	
+	
+	/* wrap--Gray/Fog Color  Themes */
+	.wrap--fog-light {
+		background-color:$fog_light;
+		padding: $wrapPadding;
+	}
+	.wrap--fogExtra-light {
+		background-color: $fog_extra_light;
+
+		& .callout,
+		& .figure_full,
+		& .figure_split {
+			background-color:#fff;
+		}
+	}
+		.wrap--fog-light .callout,
+		.wrap--fog-light .figure_full,
+		.wrap--fog-light .figure_split {
+			background-color:#fff;
+		}
+	
+	.wrap--fog {
+		background-color: $fog;
+		padding: $wrapPadding;
+		color:#111;
+	}
+	
+	.wrap--slate {
+		background-color: $slate;
+		padding: $wrapPadding;
+		color:#fff;
+	}
+		.wrap--slate a:not(.btn),  
+		.wrap--slate a:not(.btn):link, 
+		.wrap--slate a:not(.btn):visited {
+			color:$peridot;
+		}
+		
+		.wrap--slate a:not(.btn):active, 
+		.wrap--slate a:not(.btn):hover,
+		.wrap--slate a:not(.btn):focus {
+			color:$peridot_light;	
+		}
+		
+		.wrap--slate .callout,
+		.wrap--slate .figure_full,
+		.wrap--slate .figure_split {
+			color: #333;
+		}
+	
+	.wrap--slate-light {
+		background-color:$slate_light;
+		padding: $wrapPadding;	
+	}
+
+// Reduce spacing between wraps of the same BG color to prevent perceived doubling-up of spacing between sections
+	.wrap--whitewrap-- + .white,
+	.wrap--oceanwrap-- + .ocean,
+	.wrap--ocean-lightwrap-- + .ocean-light,
+	.wrap--skywrap-- + .sky,
+	.wrap--sky-lightwrap-- + .sky-light,
+	.wrap--wavewrap-- + .wave,
+	.wrap--currentwrap-- + .current,
+	.wrap--springwrap-- + .spring,
+	.wrap--fogwrap-- + .fog,
+	.wrap--fog-lightwrap-- + .fog-light,
+	.wrap--fogExtra-lightwrap-- + .fogExtra-light,
+	.wrap--slatewrap-- + .slate,
+	.wrap--slate-lightwrap-- + .slate-light { 
+		padding-top:20px;
+	}
+
+	// Same thing but with invisible anchor-targets between the wraps
+	.wrap--whitewrap-- + .anchor-target +  .white,
+	.wrap--oceanwrap-- + .anchor-target +  .ocean,
+	.wrap--ocean-lightwrap-- + .anchor-target +  .ocean-light,
+	.wrap--skywrap-- + .anchor-target +  .sky,
+	.wrap--sky-lightwrap-- + .anchor-target +  .sky-light,
+	.wrap--mosswrap-- + .anchor-target +  .moss,
+	.wrap--moss-lightwrap-- + .anchor-target +  .moss-light,
+	.wrap--wavewrap-- + .anchor-target +  .wave,
+	.wrap--currentwrap-- + .anchor-target +  .current,
+	.wrap--springwrap-- + .anchor-target +  .spring,
+	.wrap--fogwrap-- + .anchor-target +  .fog,
+	.wrap--fog-lightwrap-- + .anchor-target +  .fog-light,
+	.wrap--fogExtra-lightwrap-- + .anchor-target +  .fogExtra-light,
+	.wrap--slatewrap-- + .anchor-target +  .slate,
+	.wrap--slate-lightwrap-- + .anchor-target +  .slate-light { 
+		padding-top:20px;
+	}
+
+// wrap--Create "arrow" element between per divs
+	.bottom-arrow {
+		position: relative;
+	}
+
+	.bottom-arrow::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		width: 0;
+		height: 0;
+		border-top: 25px solid #fff;
+		border-left: 40px solid transparent;
+		border-right: 40px solid transparent;
+		bottom: -25px;
+		z-index:1000;
+	}
+
+	.bottom-arrow + .anchor-target + .parent_wrapper,
+	.bottom-arrow + .anchor-target + .parent_wrapper,
+	.bottom-arrow + .parent_wrapper {
+		padding-top:60px;
+	}
+	
+	// Color bottom arrow color themes
+		.wrap--ocean.bottom-arrow:after {
+			border-top-color:$ocean;
+		}
+		
+		.wrap--ocean-light.bottom-arrow:after {
+			border-top-color:$ocean_light;
+		}
+		
+		.wrap--sky.bottom-arrow:after {
+			border-top-color: $sky;
+		}
+		
+		.wrap--sky-light.bottom-arrow:after {
+			border-top-color:$sky_light;
+		}
+		
+		.wrap--gray1.bottom-arrow:after,
+		.wrap--fog-light.bottom-arrow:after {
+			border-top-color:$fog_light;
+		}
+		
+		.wrap--gray2.bottom-arrow:after {
+			border-top-color:#c8cacb;
+		}
+		
+		.wrap--gray3.bottom-arrow:after,
+		.wrap--fog.bottom-arrow:after {
+			border-top-color: $fog;
+		}
+		
+		.wrap--gray4.bottom-arrow:after {
+			border-top-color:#8d8e90;
+		}
+		
+		.wrap--gray5.bottom-arrow:after,
+		.wrap--slate.bottom-arrow:after {
+			border-top-color: $slate;
+		}
+		
+		.wrap--gray6.bottom-arrow:after {
+			border-top-color:#414347;
+		}
+		
+		.wrap--slate-light.bottom-arrow:after {
+			border-top-color:$slate_light;
+		}
+		
+		.wrap--moss.bottom-arrow:after {
+			border-top-color: $moss;
+		}
+		
+		.wrap--moss-light.bottom-arrow:after {
+			border-top-color:$moss_light;
+		}
+		
+		.wrap--peridot.bottom-arrow:after {
+			border-top-color: $peridot;
+		}
+		
+		.wrap--peridot-light.bottom-arrow:after {
+			border-top-color:$peridot_light;
+		}
+		
+		.wrap--sunset.bottom-arrow:after {
+			border-top-color: $sunset;
+		}
+		
+		.wrap--sunset-light.bottom-arrow:after {
+			border-top-color:$sunset_light;
+		}
+
+
+// "Big Section" styles
+.padding-10 {
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.padding-80 {
+	padding-top:80px;
+	padding-bottom:80px;
+}
+
+.padding-100 {
+	padding-top:100px;
+	padding-bottom:100px;
+}
+
+.padding-150 {
+	padding-top:150px;
+	padding-bottom:150px;
+}
+
+// Full bleed hero bg image
+////	.full-bleed-hero-image-wrapper {
+////		background-color: transparent;
+////		overflow-y:visible; // Necessary for absolutely positioned image to appear below megamenu/topbar
+////		position: relative;
+////		min-height:470px;
+////		padding-top:90px;
+////		padding-bottom:90px;
+////	
+////		&.overlap-content-bottom + *, 
+////		&.overlap-content-bottom + .anchor-target + * {
+////			z-index: -1;
+////		}
+////	}
+////	 
+////		.full-bleed-hero-image-container {
+////			position: absolute;
+////			margin:auto;
+////			z-index: -1;
+////			left:0; right:0; bottom:0;
+////		}
+////	
+////		// For background-image widget
+////		.full-bleed-hero-image-container > .background-image-view {
+////			width:100%;
+////			height:900px;
+////			background-position: center bottom;
+////			background-size:auto;
+////		}
+////	
+////	
+////		@media only screen and (min-width : 1921px) {
+////				.full-bleed-hero-image-container > .background-image-view {
+////					background-size:cover;
+////				}
+////			}
+////	
+////		@media only screen and (max-width : 767px) {
+////			.full-bleed-hero-image-wrapper {
+////				padding: $wrapPadding;
+////			}
+////			.full-bleed-hero-image-container {
+////				display: none;
+////			}
+////		}
+
+// 50-50 Hero Content/Image Split
+////		.hero-content-wrapper_50-50 {
+////			position: relative;
+////			padding-top:0;
+////			padding-bottom:0;
+////		}
+////	
+////		.hero-content-wrapper_50-50 h3:not(.reset) {
+////			color:$ocean;
+////		}
+////	
+////		.hero-content-wrapper_50-50-image {
+////			position: absolute;
+////			
+////			top:0; right:0; bottom:0; left:0;
+////			margin:auto;
+////	
+////			background-color: $fog_light;
+////			z-index: 0;
+////		}
+////	
+////			.hero-image-right > .hero-content-wrapper_50-50-image  {
+////				left:50%;
+////			}
+////	
+////			.hero-image-left > .hero-content-wrapper_50-50-image  {
+////				right:50%;
+////			}
+////	
+////			.hero-content-wrapper_50-50-image > .background-image-view {
+////				width:100%;
+////				height:100%;
+////	
+////				background-size:cover;
+////				background-position: center;
+////			}
+////	
+////	
+////		.hero-content-wrapper_50-50 .layout-col-outer {
+////			min-height:500px;
+////			display:flex;
+////		}
+////	
+////		.hero-content-wrapper_50-50 .left-content_50-50 {
+////			justify-content: left;
+////		}
+////	
+////		.hero-content-wrapper_50-50 .right-content_50-50 {
+////			justify-content: right;
+////			// IE11 Fixes to get justify-content:right; working
+////			flex-direction: column;
+////			align-items: center;
+////		}
+////	
+////		.hero-content-wrapper_50-50 .layout-inner {
+////			padding-top:50px;
+////			padding-bottom:50px;
+////			display:flex;
+////			flex-wrap:wrap;
+////			align-items: center;
+////			align-content: center;
+////			height:100%; // IE11 vertical centering fix
+////	
+////			max-width:375px;
+////		}
+////	
+////	
+////	
+////	
+////		// Mobile styles
+////		@media only screen and (max-width : 991px) {
+////			// Flip side-by side layout to stacked
+////			.hero-content-wrapper_50-50 .layout-wrapper
+////			  {
+////				padding-top:40px;
+////				padding-bottom:40px;
+////			}
+////			
+////			.hero-content-wrapper_50-50 .layout-col-outer {
+////				min-height:0;
+////				width:auto;
+////			}
+////	
+////			.hero-content-wrapper_50-50.hero-image-left .layout-col-50,
+////			.hero-content-wrapper_50-50.hero-image-right .layout-col-50 {
+////				width:auto;
+////			}
+////	
+////			.hero-content-wrapper_50-50 .layout-inner {
+////				max-width: 500px;
+////				padding:0;
+////			}
+////	
+////			.hero-content-wrapper_50-50.hero-image-left > .hero-content-wrapper_50-50-image,
+////			.hero-content-wrapper_50-50.hero-image-right > .hero-content-wrapper_50-50-image {
+////				position:static;
+////				height:300px;
+////			}
+////	
+////			.hero-content-wrapper_50-50 .layout-wrapper
+////			  {
+////				  min-height: 300px;
+////			  }
+////		}
+////	
+////		@media only screen and (max-width : 767px) {
+////			.hero-content-wrapper_50-50.hero-image-full .layout-wrapper {
+////				display: block;
+////			}
+////			.hero-content-wrapper_50-50.hero-image-full .layout-col-50 {
+////				width:auto;
+////			}
+////			.hero-content-wrapper_50-50.hero-image-full > .hero-content-wrapper_50-50-image {
+////				position:static;
+////				height:300px;
+////			}
+////			/*
+////			.hero-content-wrapper_50-50.hero-image-full .background-image-view {
+////					background-size: auto;
+////					background-position: 30% center;
+////			}
+////			*/
+////		}
+
+/* ===========================================
+Bottom wave decoration for wrap sections
+============================================= */
+
+.bottom-wave {
+	position:relative;
+	overflow-y:visible;
+	padding-bottom:10px;
+
+	& + * {
+		padding-top:190px;
+	}
+
+	// Spacing adjustments w/ anchor-target elements
+	& + .anchor-target {
+		padding-top:0;
+
+		position: relative;
+		bottom:-50px;
+
+		& + * {
+			padding-top:190px;
+		}
+	}
+}
+
+.archer-bottom-wave {
+	position:relative;
+	overflow-y:visible;
+	padding-bottom:10px;
+
+	& + * {
+		padding-top:220px;
+	}
+
+	// Spacing adjustments w/ anchor-target elements
+	& + .anchor-target {
+		padding-top:0;
+
+		position: relative;
+		bottom:-50px;
+
+		& + * {
+			padding-top:220px;
+		}
+	}
+}
+
+// SF Editor overwrite
+.rdContent .archer-bottom-wave::after {
+	position:static;
+}
+
+.bottom-wave::after {
+	position: absolute;
+	content:'';
+	display: block;
+	background-repeat: repeat-x;
+	background-position: center;
+	background-position: calc(50% + 200px) 50%;
+	height:145px;
+	bottom:-145px;
+	left:0; right:0;
+	margin:auto;
+	z-index:100;
+}
+.archer-bottom-wave::after {
+	position: absolute;
+	content:'';
+	display: block;
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: 2280px 145px;
+	height:145px;
+	bottom:-145px;
+	left:0; right:0;
+	margin:auto;
+	z-index:100;
+}
+
+// Color themes
+.wrap--current.bottom-wave::after { background-image:url('https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/site-design/current-wave.svg'); }
+.wrap--ocean.bottom-wave::after { background-image:url('https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/site-design/ocean-wave.svg'); }
+.wrap--fog-light.bottom-wave::after { background-image:url('https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/site-design/foglight-wave.svg'); }
+.wrap--fogExtra-light.bottom-wave::after { background-image:url('https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/site-design/fog-extra-light-wave.svg'); }
+.wrap--sky-light.bottom-wave::after { background-image:url('https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/site-design/skylight-wave.svg'); }
+.wrap--fog.bottom-wave::after { background-image:url('https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/site-design/fog-wave.svg'); }
+.wrap--ocean-light.bottom-wave::after { background-image:url('https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/site-design/oceanlight-wave.svg'); }
+.wrap--sky.bottom-wave::after { background-image:url('https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/site-design/sky-wave.svg'); }
+.wrap--wave.bottom-wave::after { background-image:url('https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/site-design/wave-wave.svg'); }
+.wrap--white.bottom-wave::after { background-image:url('https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/site-design/white-wave.svg'); }
+// Archer
+.wrap--fogExtra-light.archer-bottom-wave::after { background-image:url('https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/site-design/archer-wave-fog-light.svg'); }
+
+// "Back" link stripe
+
+
+$stripe-border-height: 5px;
+
+.back-stripe {
+	padding-top:10px;
+	padding-bottom:10px;
+	background-color:#f1f4f6;
+	position: relative;
+	margin-top:$stripe-border-height;
+	overflow: visible;
+
+	&:before {
+		content:'';
+		display: block;
+		position:absolute;
+		top:($stripe-border-height * -1);
+		left:0; right:0;
+		height:$stripe-border-height;
+		background: rgb(250,250,250);
+		background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(250,250,250,1) 90%); 
+	}
+}
+
+// Fletching BG
+.fletching-bg {
+	background-image: url('https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/site-design/fletching-bg.png');
+	background-position: right 40px;
+	background-repeat: no-repeat;
+	background-size: 50px 247px;
+
+	@media only screen and (max-width : 800px) {
+		background-image: none;
+	}
+}

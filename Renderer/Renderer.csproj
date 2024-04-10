@@ -26,6 +26,7 @@
     <Folder Include="Entities\LanguageSelector\" />
     <Folder Include="Entities\Testimonial\" />
     <Folder Include="Models\Testimonial\" />
+    <Folder Include="ResourcePackages\" />
     <Folder Include="ViewModels\Testimonial\" />
     <Folder Include="Controllers\" />
     <Folder Include="Entities\StaticSection\" />
@@ -46,6 +47,7 @@
     <PackageReference Include="Progress.Sitefinity.AspNetCore.Widgets" Version="15.1.8300.303" />
     <PackageReference Include="Progress.Sitefinity.Renderer" Version="15.1.8300.303" />
     <PackageReference Include="Progress.Sitefinity.RestSdk" Version="15.1.8300.303" />
+    <PackageReference Include="Telerik.Sitefinity.PrecompiledTemplates" Version="15.1.8300" />
 
     
   </ItemGroup>

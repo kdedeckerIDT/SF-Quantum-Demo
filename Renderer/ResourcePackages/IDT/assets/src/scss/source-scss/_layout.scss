@@ -1,0 +1,799 @@
+// Sheet Variables
+$vertical-spacing: 25px;
+
+
+/* =======================================
+ * Flexbox Layout and Helper Styles
+ * ======================================= */
+
+// Column flexbox column widths
+.layout-col-20 {
+    width: 20%;
+}
+
+.layout-col-25 {
+    width: 25%;
+}
+
+.layout-col-30 {
+    width: 30%;
+}
+
+.layout-col-33 {
+    width: 33%;
+}
+
+.layout-col-34 {
+    width: 34%;
+}
+
+.layout-col-40 {
+    width: 40%;
+}
+
+.layout-col-50 {
+    width: 50%;
+}
+
+.layout-col-60 {
+    width: 60%;
+}
+
+.layout-col-70 {
+    width: 70%;
+}
+
+.layout-col-80 {
+    width: 80%;
+}
+
+.layout-col-100 {
+    width: 100%;
+}
+
+
+// Mobile restacking breakpoints for Flexbox container
+// Mobile mixins
+
+// Used to add vertical spacing between restacked child elements, then cleared for the last child in the series (margin for parent will space elements at that point)
+@mixin mobileChildSpacing($breakpoint, $vertical-spacing) {
+    .layout-wrapper.#{$breakpoint} > .layout-col-outer {
+        margin-bottom: #{$vertical-spacing};
+    }
+
+    .layout-wrapper.#{$breakpoint} > .layout-col-outer:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+@media only screen and (max-width : 479px) {
+    .layout-wrapper.xs {
+        display: block;
+    }
+
+    .layout-wrapper.xs.outer.gutters {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .layout-wrapper.xs > .layout-col-outer {
+        width: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    @include mobileChildSpacing("xs", $vertical-spacing);
+}
+
+@media only screen and (max-width : 767px) {
+    .layout-wrapper.sm {
+        display: block;
+    }
+
+    .layout-wrapper.sm.outer.gutters {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .layout-wrapper.sm > .layout-col-outer {
+        width: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    @include mobileChildSpacing("sm", $vertical-spacing);
+}
+
+@media only screen and (max-width : 991px) {
+    .layout-wrapper.md {
+        display: block;
+    }
+
+    .layout-wrapper.md.outer.gutters {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .layout-wrapper.md > .layout-col-outer {
+        width: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    @include mobileChildSpacing("md", $vertical-spacing);
+}
+
+@media only screen and (max-width : 1199px) {
+    .layout-wrapper.lg {
+        display: block;
+    }
+
+    .layout-wrapper.lg.outer.gutters {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .layout-wrapper.lg > .layout-col-outer {
+        width: auto;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    @include mobileChildSpacing("lg", $vertical-spacing);
+}
+
+// Flexbox Helper Styles System, mobile-first style
+/*
+.flex-container, .flex-container.xs {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex-container.text-center {
+    justify-content: center;
+}
+
+// Flexbox wrap helpers
+.wrap-2-up,
+.wrap-3-up,
+.wrap-4-up,
+.wrap-5-up,
+.wrap-6-up {
+    flex-wrap: wrap;
+}
+
+// This is the percentage width of the gutter between columns, all other widths are calculated using this width
+$wrap-gutter-width: 1;
+
+.wrap-2-up > *,
+.wrap-3-up > *,
+.wrap-4-up > *,
+.wrap-5-up > *,
+.wrap-6-up > *,
+.wrap-2-up > .callout,
+.wrap-3-up > .callout,
+.wrap-4-up > .callout,
+.wrap-5-up > .callout,
+.wrap-6-up > .callout {
+	margin: percentage($wrap-gutter-width/100);
+}
+
+.wrap-2-up > * {
+	// This repeated formula will work out the column's width as a percentage based on the number of columns and the width of the gutter
+    flex-basis: percentage((100 - (((2*2)-2)* $wrap-gutter-width)) / 2 / 100);
+}
+
+	.wrap-2-up > :nth-child(odd) {
+		margin-left: 0;
+	}
+	.wrap-2-up > :nth-child(even) {
+    	margin-right: 0;
+	}
+
+.wrap-3-up > * {
+    flex-basis: percentage((100 - (((3*2)-2)* $wrap-gutter-width)) / 3  / 100);
+}
+
+	.wrap-3-up > :nth-child(3n+1) {
+		margin-left: 0;
+	}
+	
+	.wrap-3-up > :nth-child(3n) {
+		margin-right: 0;
+	}
+
+.wrap-4-up > * {
+    flex-basis: percentage((100 - (((4*2)-2)* $wrap-gutter-width)) / 4  / 100);
+}
+	
+	.wrap-4-up > :nth-child(4n+1) {
+		margin-left: 0;
+	}
+
+	.wrap-4-up > :nth-child(4n) {
+		margin-right: 0;
+	}
+
+.wrap-5-up > * {
+    flex-basis: percentage((100 - (((5*2)-2)* $wrap-gutter-width)) / 5  / 100);
+}
+	.wrap-5-up > :nth-child(5n+1) {
+		margin-left: 0;
+	}
+
+	.wrap-5-up > :nth-child(5n) {
+		margin-right: 0;
+	}
+
+
+.wrap-6-up > * {
+    flex-basis: percentage((100 - (((6*2)-2)* $wrap-gutter-width)) / 6  / 100);
+}
+
+	.wrap-6-up > :nth-child(6n+1) {
+		margin-left: 0;
+	}
+
+	.wrap-6-up > :nth-child(6n) {
+		margin-right: 0;
+	}
+	
+
+.wrap-no-wrap {
+    flex-wrap: nowrap;
+}
+
+
+// Vertical spacing
+[class*="wrap-"].child-margin-0 > * {
+    margin-top:0;
+    margin-bottom:0;
+}
+
+// md | medium breakpoints
+@media only screen and (max-width : 991px) {
+    .flex-container.md {
+        display: block;
+    }
+}
+
+@media only screen and (max-width : 991px) {
+    .flex-container.md > *:first-child {
+        margin-top: 0;
+    }
+
+    .flex-container.md > * {
+        margin-top: 20px;
+    }
+	
+	// Clear left and right margins for stacked content at breakpoint
+	.flex-container.md[class*=wrap-] > :nth-child(odd),
+	.flex-container.md[class*=wrap-] > :nth-child(even) {
+		margin-left:0;
+		margin-right:0;
+	}
+	
+}
+
+// sm | small breakpoints
+@media only screen and (max-width : 767px) {
+    .flex-container.sm {
+        display: block;
+    }
+}
+
+@media only screen and (max-width : 767px) {
+    .flex-container.sm > *:first-child {
+        margin-top: 0;
+    }
+
+    .flex-container.sm > * {
+        margin-top: 20px;
+    }
+	
+	// Clear left and right margins for stacked content at breakpoint
+	.flex-container.sm[class*=wrap-] > :nth-child(odd),
+	.flex-container.sm[class*=wrap-] > :nth-child(even) {
+		margin-left:0;
+		margin-right:0;
+	}
+}
+
+
+// Alignment styles
+.flex-container.items-center {
+    align-items: center;
+}
+
+.flex-container.row-reverse,
+.layout-wrapper.row-reverse {
+    flex-direction: row-reverse;
+}
+
+// Wrapping Styles
+	// All breakpoints
+	.flex-wrap {
+		flex-wrap: wrap;
+	}
+	
+	// Break-points (start wrapping items when XX breakpoint is hit)
+	@media only screen and (max-width : 1199px) {
+        .flex-wrap-lg {
+            flex-wrap: wrap;
+        }
+    }
+    @media only screen and (max-width : 991px) {
+        .flex-wrap-md {
+            flex-wrap: wrap;
+        }
+    }
+
+    @media only screen and (max-width : 767px) {
+        .flex-wrap-sm {
+            flex-wrap: wrap;
+        }
+    }
+
+    @media only screen and (max-width : 479px) {
+        .flex-wrap-xs {
+            flex-wrap: wrap;
+        }
+    }
+*/
+
+/* =======================================
+ * Flex Masonry Layout
+ * ======================================= */
+    /*
+    .flex-masonry {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+        flex-wrap:wrap;
+        margin-left:-1%;
+        margin-right:-1%;
+    }
+
+    .flex-masonry > * {
+        flex-basis: auto;
+		width:100%;
+		max-width:31.33%;
+        margin:1%;
+    }
+
+    .flex-masonry > :nth-child(7n - 3),
+	.flex-masonry > :nth-child(7n) {
+        max-width: 64.66%;
+    }
+	
+	// Flex Masonry Media-queries
+		@media only screen and (max-width : 991px) {
+			.flex-masonry > :nth-child(n) {
+				max-width:48%;
+			}
+		}
+	
+		@media only screen and (max-width : 767px) {
+			.flex-masonry {
+				display:block;
+			}
+			
+			.flex-masonry > :nth-child(n) {
+				max-width:none;
+				width:auto;
+				margin-bottom: 15px;
+			}
+			
+			.flex-masonry > :last-child {
+				margin-bottom:0;	
+			}
+		}
+    */
+
+/*
+=======================
+LAYOUT HELPER CLASSES
+=======================
+*/
+/*
+    // Display helpers (identical to Bootstrap 4)
+    .d-block {
+        display: block !important;
+    }
+
+    .d-inline-block {
+        display: inline-block !important;
+    }
+
+    .d-inline {
+        display: inline !important;
+    }
+    // Custom ones
+    .d-table {
+        display: table !important;
+    }
+
+    .d-table-cell {
+        display: table-cell !important;
+    }
+
+    @media only screen and (max-width : 479px) {
+        .hidden-xxs {
+            display: none !important;
+        }
+    }
+    // Spacing Helpers
+        // Margin
+        .margin-bottom {
+            margin-bottom: $vertical-spacing !important;
+        }
+
+        .margin-bottom-s, .margin-bottom-sm {
+            margin-bottom: ($vertical-spacing * .5) !important;
+        }
+
+        .margin-bottom-xs {
+            margin-bottom: ($vertical-spacing * .3) !important;
+        }
+
+        .margin-bottom-lg {
+            margin-bottom: ($vertical-spacing * 1.75) !important;
+        }
+
+        .margin-bottom-xl {
+            margin-bottom: ($vertical-spacing * 2.75) !important;
+        }
+
+        .margin-top {
+            margin-top: $vertical-spacing !important;
+        }
+
+        .margin-top-lg {
+            margin-top: ($vertical-spacing * 1.75) !important;
+        }
+
+        .margin-top-xl {
+            margin-top: ($vertical-spacing * 2.75) !important;
+        }
+
+        .margin-top-s, .margin-top-sm {
+            margin-top: ($vertical-spacing * .5) !important;
+        }
+
+        .margin-top-xs {
+            margin-top: ($vertical-spacing * .3) !important;
+        }
+
+        @media only screen and (min-width : 480px) {
+            .xs-margin-bottom {
+                margin-bottom: $vertical-spacing !important;
+            }
+    
+            .xs-margin-bottom-s, .xs-margin-bottom-sm {
+                margin-bottom: ($vertical-spacing * .5) !important;
+            }
+    
+            .xs-margin-bottom-xs {
+                margin-bottom: ($vertical-spacing * .3) !important;
+            }
+    
+            .xs-margin-bottom-lg {
+                margin-bottom: ($vertical-spacing * 1.75) !important;
+            }
+    
+            .xs-margin-bottom-xl {
+                margin-bottom: ($vertical-spacing * 2.75) !important;
+            }
+        }
+
+        @media only screen and (max-width : 767px) {
+            .sm-margin-bottom {
+                margin-bottom: $vertical-spacing !important;
+            }
+    
+            .sm-margin-bottom-s, .sm-margin-bottom-sm {
+                margin-bottom: ($vertical-spacing * .5) !important;
+            }
+    
+            .sm-margin-bottom-xs {
+                margin-bottom: ($vertical-spacing * .3) !important;
+            }
+    
+            .sm-margin-bottom-lg {
+                margin-bottom: ($vertical-spacing * 1.75) !important;
+            }
+    
+            .sm-margin-bottom-xl {
+                margin-bottom: ($vertical-spacing * 2.75) !important;
+            }
+        }
+        
+        @media only screen and (max-width : 991px) {
+            .md-margin-bottom {
+                margin-bottom: $vertical-spacing !important;
+            }
+    
+            .md-margin-bottom-s, .md-margin-bottom-sm {
+                margin-bottom: ($vertical-spacing * .5) !important;
+            }
+    
+            .md-margin-bottom-xs {
+                margin-bottom: ($vertical-spacing * .3) !important;
+            }
+    
+            .md-margin-bottom-lg {
+                margin-bottom: ($vertical-spacing * 1.75) !important;
+            }
+    
+            .md-margin-bottom-xl {
+                margin-bottom: ($vertical-spacing * 2.75) !important;
+            }
+        }
+
+
+        .no-margin-top {
+            margin-top: 0 !important;
+        }
+
+        .no-margin-bottom {
+            margin-bottom: 0 !important;
+        }
+
+        // Padding
+        .padding-bottom {
+            padding-bottom: $vertical-spacing !important;
+        }
+
+        .padding-bottom-s, .padding-bottom-sm {
+            padding-bottom: ($vertical-spacing * .5) !important;
+        }
+
+        .padding-bottom-xs {
+            padding-bottom: ($vertical-spacing * .3) !important;
+        }
+
+        .padding-bottom-xs.padding-bottom-s, .padding-bottom-xs.padding-bottom-sm {
+            padding-bottom: ($vertical-spacing * .6) !important;
+        }
+
+        .padding-bottom.padding-bottom-s, padding-bottom.padding-bottom-sm {
+            padding-bottom: ($vertical-spacing * .75) !important;
+        }
+
+        .padding-bottom.padding-bottom-lg {
+            padding-bottom: ($vertical-spacing * 1.35) !important;
+        }
+
+        .padding-bottom-lg {
+            padding-bottom: ($vertical-spacing * 1.75) !important;
+        }
+
+        .padding-bottom-xl {
+            padding-bottom: ($vertical-spacing * 3) !important;
+        }
+
+        .padding-top {
+            padding-top: $vertical-spacing !important;
+        }
+
+        .padding-top-lg {
+            padding-top: ($vertical-spacing * 1.75) !important;
+        }
+
+        .padding-top-xl {
+            padding-top: ($vertical-spacing * 3) !important;
+        }
+
+        .padding-top-s, .padding-top-sm {
+            padding-top: ($vertical-spacing * .5) !important;
+        }
+
+        .padding-top-xs {
+            padding-top: ($vertical-spacing * .3) !important;
+        }
+
+        .padding-top-xs.padding-top-s, .padding-top-xs.padding-top-sm {
+            padding-top: ($vertical-spacing * .6) !important;
+        }
+
+        .padding-top.padding-top-s, .padding-top.padding-top-sm {
+            padding-top: ($vertical-spacing * .75) !important;
+        }
+
+        .padding-top.padding-top-lg {
+            padding-top: ($vertical-spacing * 1.35) !important;
+        }
+
+        .no-padding {
+            padding: 0 !important;
+        }
+
+        .no-padding-top {
+            padding-top: 0 !important;
+        }
+
+        .no-padding-bottom {
+            padding-bottom: 0 !important;
+        }
+
+    // Shift position helpers
+        .shift-down {
+            &-sm {
+                position: relative;
+                bottom:-5px;
+            }
+        }
+
+    .temp_tri {
+        margin-top: 30px;
+    }
+*/
+    .h-100 {
+        height:100%;
+    }
+
+    .overflow-scroll {
+        overflow-x: auto;
+        // Fix for some strange functionality in both Chrome and Firefox
+        padding-left:1px;
+        padding-right:1px;
+    }
+
+    // Max-width helpers
+		@mixin maxWidthHelper($imageWidth) {
+            .max-width-#{$imageWidth} {
+                max-width:$imageWidth + px;
+            }
+		}
+		@include maxWidthHelper(100);
+        @include maxWidthHelper(200);
+        @include maxWidthHelper(300);
+        @include maxWidthHelper(400);
+        @include maxWidthHelper(500);
+        @include maxWidthHelper(600);
+        @include maxWidthHelper(700);
+        @include maxWidthHelper(800);
+        @include maxWidthHelper(900);
+
+    
+    .table-wrapper {
+        display: table;
+        width: 100%;
+        height: 100%;
+    }
+
+    .cell-wrapper {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+
+    .preload-images {
+        visibility: hidden;
+        position: fixed;
+        left: -10px;
+        top: -10px;
+        width: 1px;
+        height: 1px;
+        z-index: -9000;
+    }
+
+/*================================================
+Overlaying/Overlapping Sections Styles
+================================================== */
+/*
+    .parent_wrapper.has-lower-overlap {
+        padding-bottom: 120px;
+    }
+
+    .parent_wrapper.has-upper-overlap {
+        padding-top: 120px;
+    }
+
+    .parent_wrapper.overlap-content-top,
+    .parent_wrapper.overlap-content-bottom {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .parent_wrapper.overlap-content-top > .inner_wrap,
+    .parent_wrapper.overlap-content-bottom > .inner_wrap {
+        position: relative;
+    }
+
+    .parent_wrapper.overlap-content-top > .inner_wrap {
+        top: -65px;
+    }
+
+    .parent_wrapper.overlap-content-bottom > .inner_wrap {
+        bottom: -65px;
+    }
+
+    // Reset the bottom margin of the last element with "inner_wrap" if it is in a "..Wrap" div which includes it's own bottom-padding
+    [class*="Wrap"].overlap-content-top > .inner_wrap:last-of-type,
+    [class*="Wrap"].overlap-content-bottom > .inner_wrap:last-of-type {
+        margin-bottom: 0;
+    }
+    // Reset to padding top/bottom to preserve overlapping appearance
+    div.overlap-content-top,
+    div.overlap-content-bottom {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .shift-content-up {
+        position: relative;
+        z-index:100;
+        margin-top:-150px;
+    }
+*/
+  
+/* ==============================================================
+Related content layout styles
+================================================================= */
+//
+//    .related-content-container > div:not(.callout):not(.RadDockZone),
+//    .related-content-container > .RadDockZone > .RadDock {
+//        background-color: #e4e4e4;
+//        border-radius: 12px;
+//        padding: 22px;
+//        color: #333;
+//    }
+//
+//    // Color theme
+//    .related-content-container.ocean > div:not(.callout):not(.RadDockZone),
+//    .related-content-container.ocean > .RadDockZone > .RadDock {
+//        background-color: $ocean;
+//        color: #fff;
+//    }
+//
+//    @media only screen and (min-width:992px) {
+//        .related-content-container > div:not(.callout):not(.RadDockZone),
+//        .related-content-container > .RadDockZone > .RadDock {
+//            padding: 2% 3%; // <!-- the horizontal amount is used to offset in IE11 fix below
+//            // IE 11 doesn't care about box-sizing for flex-items, need fix due to padding above
+//            $two-column-width: (100 - (((2*2)-2)* $wrap-gutter-width)) / 2; // This formula is lifted from the wrap layouts above
+//            -ms-flex-preferred-size: percentage(($two-column-width - (3 * 2)) / 100);
+//        }
+//    }
+//
+//    // Wrap color theme overwrites:
+//    @mixin relatedContentLinkColorOverwrite($colorThemeClass) {
+//        #{$colorThemeClass} .related-content-container > div a:not(.btn),  
+//        #{$colorThemeClass} .related-content-container > div a:not(.btn):link, 
+//        #{$colorThemeClass} .related-content-container > div a:not(.btn):visited {
+//            color:$ocean;
+//        }
+//
+//        #{$colorThemeClass} .related-content-container > div a:not(.btn):active, 
+//        #{$colorThemeClass} .related-content-container > div a:not(.btn):hover,
+//        #{$colorThemeClass} .related-content-container > div a:not(.btn):focus  {
+//            color:$sky;	
+//        }
+//    }
+//    @include relatedContentLinkColorOverwrite(".slateWrap");
+//    @include relatedContentLinkColorOverwrite(".oceanWrap");
+//    @include relatedContentLinkColorOverwrite(".currentWrap");
+//    @include relatedContentLinkColorOverwrite(".waveWrap");
+//
+//
+//    // Box color theme overwirtes
+//    @mixin colorThemeLinkOverwrite($colorThemeClass) {
+//        .related-content-container#{$colorThemeClass} > div a:not(.btn),  
+//        .related-content-container#{$colorThemeClass} > div a:not(.btn):link, 
+//        .related-content-container#{$colorThemeClass} > div a:not(.btn):visited {
+//            color:$sky_light;
+//        }
+//
+//        .related-content-container#{$colorThemeClass} > div a:not(.btn):active, 
+//        .related-content-container#{$colorThemeClass} > div a:not(.btn):hover,
+//        .related-content-container#{$colorThemeClass} > div a:not(.btn):focus  {
+//            color:$sky;
+//        }
+//    }
+//    @include colorThemeLinkOverwrite(".ocean");

@@ -1,0 +1,470 @@
+/*
+===================================
+BASE STYLES AND BOOTSTRAP OVERRIDES
+===================================
+*/
+
+body {
+    font-family: 'Lato', sans-serif;
+    background: #fff;
+}
+
+img {
+    max-width: 100%;
+}
+
+// underline links in text content for UX purposes (attempting to avoid adding underlines to buttons, nav links, headline links, etc).
+	p > a:not(.btn), 
+    p > a:link:not(.btn),
+    p > strong > a, 
+    p > b > a,
+	p + * li > a,
+	td > a:not(.btn) {
+		text-decoration:underline;
+	}
+	
+	.link-underline {
+		text-decoration:underline!important;
+	}
+	
+	.no-link-underline {
+		text-decoration:none!important;	
+	}
+	
+    .btn {
+        border-radius: 50px;
+        transition: all .25s;
+
+        &.btn-toggle {
+            position: absolute;
+            padding:0;
+            margin:auto; 
+            top:4px;
+            left:3px;
+            border-radius:30px;
+            text-transform: uppercase;
+            font-size:.8rem;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        
+            &:before {
+                // Font-awesome
+                display: inline-block;
+                font: normal normal normal 14px/1 FontAwesome;
+                font-size: inherit;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+
+                font-size:1rem;
+                width:22px;
+                height:22px;
+                position: relative;
+                top:3px;
+                content: "\f067";
+            }
+        
+            &[aria-expanded="true"] {
+                &:before {
+                    content: "\f068";
+                }
+            }
+        }
+    }
+
+    // Helpers
+    .rounded_img, .rounded-corners {
+        border-radius: 12px;
+        overflow: hidden;
+        display:block; // ensure the element this class is being applied to is block-level instead of inline, otherwise rounded corners will not appear. If inline-block is needed use the display helper class d-inline-block
+    }
+
+    .drop-shadow {
+        box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.25);
+    }
+
+    .inset-shadow {
+        box-shadow: inset 0px 20px 15px 0px rgba(0,0,0,0.08  );
+    }
+
+    .anchor-target {
+        height: 0;
+        display: block;
+        max-height: 0;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        line-height: 0;
+        font-size: 0;
+    }
+    .reveal-content {
+        display: inline-block;
+        visibility: hidden;
+        vertical-align: bottom;
+
+        overflow: hidden;
+        white-space: nowrap;
+
+        max-width:0;
+        @keyframes reveal-content {
+            from {
+                overflow: hidden;
+                white-space: nowrap;
+            }
+            to {
+            max-width:500px;
+            overflow: auto;
+            white-space: normal;
+            }
+        }
+    }
+
+    .hover-reveal {
+        &:hover,
+        &:focus,
+        &:active,
+        &.active,
+        &[aria-expanded="true"] {
+            & .reveal-content {
+                visibility: visible;
+
+                animation-name: reveal-content;
+                animation-duration: .8s;
+                animation-fill-mode: forwards;
+            }
+        }
+    }
+
+/* =================================================
+Social/Share Icons (default styles)
+==================================================== */
+
+    .social-icons-container {
+        font-size:0;
+    }
+
+    .social-icon {
+        display:inline-block;
+        vertical-align:bottom;
+        margin-right:10px;
+    }
+
+    .social-icon > svg {
+        fill: $sky;
+        transition: .3s all;
+    }
+
+    .social-icon:hover > svg,
+    .social-icon:focus > svg,
+    .social-icon:active > svg {
+        fill:$sky_light
+    }
+
+    // Base template specific social icon styles
+    .template-social-container {
+        text-align: right;
+    }
+
+    @media only screen and (max-width : 767px) {
+        .template-social-container {
+            text-align: left;
+            margin-top:20px;
+        }
+    }
+
+/* =================================================
+    Announcement Strip Styles (Appears at top of page)
+==================================================== */
+
+    #announcement-strip {
+        font-size:16px;
+        background-color:rgba(191, 225, 235, .90);
+        padding:25px 0;
+
+        box-shadow: inset 0 0 6px 1px rgba(0,0,0,0.15);
+    }
+    #announcement-strip h3,
+    #announcement-strip h4 {
+        font-size:1.3em;
+    }
+
+    #announcement-strip .close {
+        opacity: .5;
+        padding: 0 5px 2px 5px;
+        margin-left:10px;
+        border: 2px solid #999;
+        border-radius: 300px;
+    }
+
+    #announcement-strip .close:hover,
+    #announcement-strip .close:focus,
+    #announcement-strip .close:active {
+        color:#fff;
+        background-color:#ff6900;
+        border-color:#ff6900;
+    }
+
+    #announcement-strip p:last-child {
+        margin-bottom:0;
+    }
+
+    /* =========================== 
+    Ad server mark-up overwrites
+    ============================== */
+        #announcement-strip.ad_server_wrapper {
+            padding-bottom:13px;
+        }
+
+        .ad_server_wrapper .row {
+            position: relative;
+        }
+
+        .announcement_content {
+            padding-right:25px;
+        }
+
+        .announcement_content .promo_headline,
+        .announcement_content .promo_text,
+        .announcement_content .btn {
+            display:inline-block;
+            vertical-align: bottom;
+            margin-bottom:12px;
+            margin-right:7px;
+        }
+
+        #announcement-strip .promo_headline > h4 { // ID for specificity overwrite
+            margin:0;
+            font-size:1em;
+            line-height: 1.4;
+            font-weight: bold;
+        }
+
+        .announcement_content .promo_image {
+            display:none;
+        }
+
+        .announcement_content .promo_text {
+            margin-right:15px;
+        }
+
+        .announcement_content .promo_text > p {
+            font-size:1em;
+        }
+
+        .announcement_content .btn {
+            padding: 4px 8px;
+            font-size:12px;
+            line-height:1.5;
+        }
+
+        .ad_server_wrapper .close {
+            position: absolute;
+            right:0;
+            top:0;
+        }
+
+/* =====================================================
+Ad Server Banner Ad (full width promo) styles
+======================================================== */
+
+.full_width_promo,
+.banner_ad_promo {
+    background-position: center;
+    background-size:cover;
+    overflow: hidden;
+}
+
+.full_width_promo > *,
+.banner_ad_promo > * {
+    margin-left:10px;
+}
+
+.full_width_promo > .promo_text,
+.full_width_promo > .btn,
+.banner_ad_promo > .promo_text,
+.banner_ad_promo > .btn
+ {
+    float:left;
+}
+
+
+.banner_ad_promo > .promo_headline {
+    margin-bottom:7px;
+}
+
+.banner_ad_promo > .promo_text {
+    padding-top:5px;
+    max-width: 630px;
+}
+
+
+@media only screen and (min-width : 768px) {
+    .banner_ad_promo.promo_wrapper {
+        padding-right:290px;
+        background-position:right center;
+    }
+}
+
+
+/* ==================================
+Loading component
+===================================== */
+
+.loading-container {
+    background-color: #fff;
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    margin: auto;
+    z-index: 650;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-content {
+        text-align: center;
+
+        & > * {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    &.align-top {
+        align-items: flex-start;
+
+        & .loading-container-content {
+            margin-top:65px;
+        }
+    }
+}
+
+.loading-container {
+    &-content {
+        margin-top:65px;
+    } 
+}
+
+.loading-text {
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+}
+
+/* ==================================
+Plus/minus squashy toggle
+===================================== */
+.plus-toggle::before {
+    font-family: 'Glyphicons Halflings';
+    content: "\002b";
+    font-size: 10px;
+    position: relative;
+    top: -.3em;
+    margin-right: .3em;
+}
+
+.plus-toggle[aria-expanded="true"]::before,
+.plus-toggle.sf-opened::before{
+    content: "\2212";
+}
+
+/* ====================================
+Bootstrap panel extension
+====================================== */
+.panel-bg {      
+    background-color: #f5f5f5;
+    border-color: #ddd;
+        
+}
+
+h4.panel-bg {
+    margin-bottom: 0;    
+}
+
+// Tooltips styles
+.tooltip-inner {
+    background-color: $wave_dark;
+}
+.tooltip.top .tooltip-arrow {
+    border-top-color: $wave_dark;
+}
+.tooltip.right .tooltip-arrow {
+    border-right-color: $wave_dark;
+}
+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: $wave_dark;
+}
+.tooltip.left .tooltip-arrow {
+    border-left-color: $wave_dark;
+}
+
+/* =====================================
+Archer
+========================================*/
+@mixin archerHr {
+    $fletch-height: 40px;
+    border:0;
+    display: block;
+    margin-top:calc($fletch-height + 40px);
+    margin-bottom:40px;
+    height: 6px;
+    border-radius: 20px;
+    position: relative;
+    overflow: visible;
+    background-color: $wave;
+
+    &:first-of-type {
+        margin-top:$fletch-height;
+    }
+
+    &:after {
+        content:'';
+        display: block;
+        background-image:url('https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/site-design/fletching-hr.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
+
+        height:$fletch-height;
+        width:198px;
+
+        top: calc(-1 * $fletch-height);
+        
+        position: absolute;
+        left:45px;
+        z-index: 1;
+    }
+
+    @media only screen and (max-width : 767px) {
+        margin-top:calc($fletch-height/2 + 10px);
+        &:after {
+            width:.5 * 198px;
+            height: calc($fletch-height/2);
+            top: -1 * calc($fletch-height/2);
+            left:22px;
+        }
+    }
+}
+
+.archer-app-tech {
+    & hr:not(.override) {
+        @include archerHr();
+    }
+
+    h2 {
+        color:$wave;
+
+        + .lead {
+            font-size: 1.6em;
+            color:$wave;
+        }
+    }
+}
+
+.archer-hr {
+    @include archerHr();
+}

@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.3",
+    "gsap": "^3.12.5",
+    "motion": "^10.17.0"
+  },
+  "devDependencies": {
+    "sass": "^1.70.0"
+  },
+  "scripts": {
+    "sass-dev": "sass --watch --update --style=expanded scss:css",
+    "sass-prod": "sass --no-source-map --style=compressed scss:css"
+  }
+}
