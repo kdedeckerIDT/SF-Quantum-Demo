@@ -1,0 +1,44 @@
+﻿@model Progress.Sitefinity.AspNetCore.Models.PageModel
+@using Progress.Sitefinity.AspNetCore.Mvc.Rendering
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Progress.Sitefinity.AspNetCore
+
+@inject Progress.Sitefinity.AspNetCore.Web.IRequestContext requestContext;
+
+<!DOCTYPE html>
+<html id="html" lang="@requestContext.Culture">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    @Html.RenderSeoMeta(this.Model)
+
+    @RenderSection("Top", required: false)
+
+    @* TODO: Minify *@
+    <link rel="stylesheet" href="@Progress.Sitefinity.AspNetCore.Constants.PrefixRendererUrl("styles/main.css")" type="text/css" />
+    <link rel="stylesheet" href="/resourcepackages/idt/assets/css/bootstrap5-idt.css" />
+
+    <environment include="Development">
+        <link rel="stylesheet" href="/resourcepackages/idt/assets/css/idt-custom.css" />
+    </environment>
+    <environment exclude="Development">
+        @* TODO: Minify for prod *@
+        <link rel="stylesheet" href="/resourcepackages/idt/assets/css/idt-custom.css" />
+    </environment>
+
+    @RenderSection("Head", required: false)
+</head>
+
+<body class="container-fluid">
+    <header data-sfcontainer="Header">
+    </header>
+    <main data-sfcontainer="Content">
+    </main>
+    <footer data-sfcontainer="Footer">
+    </footer>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

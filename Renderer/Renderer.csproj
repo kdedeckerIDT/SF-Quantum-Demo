@@ -26,7 +26,6 @@
     <Folder Include="Entities\LanguageSelector\" />
     <Folder Include="Entities\Testimonial\" />
     <Folder Include="Models\Testimonial\" />
-    <Folder Include="ResourcePackages\" />
     <Folder Include="ViewModels\Testimonial\" />
     <Folder Include="Controllers\" />
     <Folder Include="Entities\StaticSection\" />

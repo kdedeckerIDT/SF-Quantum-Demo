@@ -1,18 +1,7 @@
 ﻿@using Progress.Sitefinity.AspNetCore.Models
+@using Progress.Sitefinity.AspNetCore.ViewComponents
 @model Progress.Sitefinity.AspNetCore.Widgets.Models.Section.SectionViewModel;
 
-<ul>
-    @if(this.Model.SectionStyle.Length > 0)
-    {
-        <li>@this.Model.SectionStyle</li>
-    }
-    @*
-    @foreach (var style in this.Model.SectionStyle)
-    {
-        <li>@style</li>
-    }
-    *@
-</ul>
 <sf-wrapper style="@this.Model.SectionStyle" tag-name="@Model.TagName" html-attributes="@Model.SectionAttributes" class="@this.Model.SectionClasses">
     @if (this.Model.ShowVideo && this.Model.VideoUrl != null)
     {
@@ -23,9 +12,15 @@
         </div>
 
     }
+    <h1>Overwrite?</h1>
     @for (var i = 0; i < this.Model.ColumnsCount; i++)
     {
-        
+        <ul>
+            @foreach (var proportion in this.Model.ColumnProportions)
+            {
+                <li>@proportion and @proportion.ToString()</li>
+            }
+        </ul>
         <div html-attributes="@this.Model.ColumnsAttributes[i]" style="@this.Model.ColumnStyles[i]" class="col-md-@this.Model.ColumnProportions[i] @this.Model.ColumnsClasses[i]" data-sfcontainer container-context="@this.Model.Context.ContainerContext(this.Model.ColumnNames[i], this.Model.ColumnTitles[i])">
             
         </div>

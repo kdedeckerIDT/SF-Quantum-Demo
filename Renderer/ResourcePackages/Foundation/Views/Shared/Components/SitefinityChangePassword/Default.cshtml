@@ -15,7 +15,7 @@
 
 @if (this.User == null || this.User.Identity == null || !this.User.Identity.IsAuthenticated)
 {
-    <div>@lbls.LoginFirstMessage</div>
+    <div class="callout alert margin-vertical-1">@lbls.LoginFirstMessage</div>
 }
 else if (!string.IsNullOrEmpty(Model.ExternalProviderName))
 {
@@ -24,28 +24,28 @@ else if (!string.IsNullOrEmpty(Model.ExternalProviderName))
 else
 {
     <div data-sf-role="sf-change-password-container"
-    data-sf-visibility-hidden="@Model.VisibilityClasses[Progress.Sitefinity.AspNetCore.Configuration.VisibilityStyle.Hidden]"
-    data-sf-invalid="@Model.InvalidClass"
-    class="@(string.IsNullOrEmpty(Model.CssClass) ? null : Model.CssClass)"
-    @Html.BuildAttributes(Model.Attributes)>
+        data-sf-visibility-hidden="@Model.VisibilityClasses[Progress.Sitefinity.AspNetCore.Configuration.VisibilityStyle.Hidden]"
+        data-sf-invalid="@Model.InvalidClass"
+        class="@(string.IsNullOrEmpty(Model.CssClass) ? null : Model.CssClass)" @Html.BuildAttributes(Model.Attributes)>
+
         <form action="@Model.ChangePasswordHandlerPath" method="post" role="form">
-            <h2>@lbls.Header</h2>
-            <div data-sf-role="error-message-container" style="display: none;" role="alert" aria-live="assertive"></div>
-            <div data-sf-role="success-message-container" style="display: none;" role="alert" aria-live="assertive"></div>
-            <div>
-                <label for="@oldPasswordInputId">@lbls.OldPassword</label>
-                <input type="password" id="@oldPasswordInputId" name="OldPassword" data-sf-role="required">
+            <h2 class="margin-bototm-1">@lbls.Header</h2>
+            <div data-sf-role="error-message-container" class="callout alert margin-vertical-1 hide" role="alert" aria-live="assertive"></div>
+            <div data-sf-role="success-message-container" class="callout success margin-vertical-1 hide" role="alert" aria-live="assertive"></div>
+            <div class="margin-bottom-1">
+                <label for="@oldPasswordInputId" class="form-label">@lbls.OldPassword</label>
+                <input type="password" class="form-control" id="@oldPasswordInputId" name="OldPassword" data-sf-role="required">
             </div>
-            <div class="mb-3">
-                <label for="@newPasswordInputId">@lbls.NewPassword</label>
-                <input type="password" id="@newPasswordInputId" name="NewPassword" data-sf-role="required">
+            <div class="margin-bottom-1">
+                <label for="@newPasswordInputId" class="form-label">@lbls.NewPassword</label>
+                <input type="password" class="form-control" id="@newPasswordInputId" name="NewPassword" data-sf-role="required">
             </div>
-            <div class="mb-3">
-                <label for="@repeatPasswordInputId">@lbls.RepeatPassword</label>
-                <input type="password" id="@repeatPasswordInputId" name="RepeatPassword" data-sf-role="required">
+            <div class="margin-bottom-1">
+                <label for="@repeatPasswordInputId" class="form-label">@lbls.RepeatPassword</label>
+                <input type="password" class="form-control" id="@repeatPasswordInputId" name="RepeatPassword" data-sf-role="required">
             </div>
 
-            <input type="submit" value="@lbls.SubmitButtonLabel" />
+            <input class="button expanded" type="submit" value="@lbls.SubmitButtonLabel" />
         </form>
 
         <input type="hidden" name="redirectUrl" value="@Model.RedirectUrl" />
