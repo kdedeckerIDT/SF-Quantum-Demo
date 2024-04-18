@@ -6,7 +6,7 @@
     var sectionContext = Model.Context;
     string sectionClasses = (!string.IsNullOrEmpty(this.Model.SectionClasses)) ? this.Model.SectionClasses: "";
 
-    if (!Regex.IsMatch(sectionClasses, @"\bfull-wrapper\b"))
+    if (!Regex.IsMatch(sectionClasses, @"\bfull-wrapper\b|main-section"))
     {
         sectionClasses = sectionClasses + " row";
     }
@@ -64,15 +64,18 @@
     
     @for (var i = 0; i < this.Model.ColumnsCount; i++)
     {
-        //col-md-@this.Model.ColumnProportions[i]
         string columnClasses = (!string.IsNullOrEmpty(this.Model.ColumnsClasses[i])) ? this.Model.ColumnsClasses[i] : "";
         // Add bootstrap column class
-        columnClasses = (!string.IsNullOrEmpty(this.Model.ColumnProportions[i])) ? columnClasses + " col-md-" + this.Model.ColumnProportions[i] : columnClasses;
 
-        // Remove Bootstrap column classes if Bootstrap 'container' class is present
-        if (columnClasses.Contains("container") && columnClasses.Contains("col-"))
+        
+
+        // Remove automatic Bootstrap column classes if Bootstrap 'container' class is present
+        if (!Regex.IsMatch(columnClasses, @"\bcontainer\b|main-column"))
         {
-            columnClasses = Regex.Replace(columnClasses, @"\bcol-\S\S-\d+\b", "");
+            columnClasses = (!string.IsNullOrEmpty(this.Model.ColumnProportions[i])) ? columnClasses + " col-md-" + this.Model.ColumnProportions[i] : columnClasses;
+        } else if (columnClasses.Contains("main-column"))
+        {
+            columnClasses = columnClasses + " row";
         }
 
         @* DEBUG PRINT 

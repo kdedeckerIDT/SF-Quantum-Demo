@@ -1,6 +1,6 @@
 Styles and Scripts for the IDT Website
 =======
-This directory contains both the sources and the compiled version of the site's global styles and scripts.
+This directory contains both the sources and the compiled versions of the site's global styles and scripts.
 
 # Installation/set-up
 1. Ensure you have [Node JS and npm](https://nodejs.org/en/download/) installed on the machine
@@ -14,13 +14,13 @@ This directory contains both the sources and the compiled version of the site's 
 
 2. Run these commands depending on your use-case:
 	- Development: `npm run sass-dev`
-		- This compiles the .scss files in the **assets\src\scss** directory into unminified CSS in the **css** directory. The command prompt will also set-up a 'watcher' that will watch the .scss files for changes and automatically compile them when they're updated.
+		- This compiles the .scss files in the **assets\src\scss** directory into unminified CSS in the **asstest\css** directory. The command prompt will also set-up a 'watcher' that will watch the .scss files for changes and automatically compile them when they're updated.
 		
 	- Committing to Production/Production: `npm run sass-prod`
 		- This compiles the .scss files in the **assets\src\scss** directory into minified CSS in the **css** directory.
 		- It is good practice to run this command on your scss and review output prior to committing your changes to ensure the minification process does not impact your styles
 		
-# Compiling website JS
+# Minifying/preparing website JS
 1. Navigate the command line/command prompt to this directory `..\ResourcePackages\IDT\assets`. Replace the `..\` with the relevant path for your set-up
 
 2. Run the command: `npm run uglify-js-prod`

@@ -5,6 +5,7 @@
 @addTagHelper *, Progress.Sitefinity.AspNetCore
 
 @inject Progress.Sitefinity.AspNetCore.Web.IRequestContext requestContext;
+@inject Progress.Sitefinity.AspNetCore.Web.IRenderContext renderContext;
 
 <!DOCTYPE html>
 <html id="html" lang="@requestContext.Culture">
@@ -25,11 +26,9 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="/resourcepackages/idt/assets/css/idt-custom.css" />
+        <link rel="stylesheet" href="/resourcepackages/idt/assets/css/editor-styles.css" />
     </environment>
-    <environment exclude="Development">
-        @* TODO: Minify for prod *@
-        <link rel="stylesheet" href="/resourcepackages/idt/assets/css/idt-custom.css" />
-    </environment>
+    <environment exclude="Development"></environment>
 
     @RenderSection("Head", required: false)
 </head>
@@ -41,6 +40,15 @@
     </main>
     <footer data-sfcontainer="Footer">
     </footer>
+    
     @RenderSection("Scripts", required: false)
+        <div id="script-wrapper" class="row" style="visibility:hidden; opacity:0; max-width:0; max-height:0; position:absolute; left:-9999px; top:-9999px;">
+            @if (renderContext.IsEdit)
+            {
+                <h6 id="script-section-header" class="text-center col-xl-12" style="display:none; color:#999; background-color:#caeed8; padding: 5px 10px">Javascript and Css Widgets go below here</h6>
+            }
+        <div class="col-xl-12" data-sfcontainer="EditorScriptsAndStyles"></div>
+    </div>
+    
 </body>
 </html>

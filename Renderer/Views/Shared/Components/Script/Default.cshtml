@@ -1,0 +1,37 @@
+@model script_widget.ScriptEntity
+@using System.Text.RegularExpressions
+@inject Progress.Sitefinity.AspNetCore.Web.IRenderContext renderContext;
+
+@{
+    string async = (Model.IsAsync) ? " async " : "";
+    string defer = (Model.IsDefer) ? " defer " : "";
+    string code = "";
+
+    if (!string.IsNullOrEmpty(Model.Url))
+    {
+        code = "<script" + async + defer + "src=" + Model.Url + "></script>";
+    }
+    else if (!string.IsNullOrEmpty(Model.Script))
+    {
+        code = "<script" + async + defer + ">" + Model.Script + "</script>";
+    }
+}
+
+@if (Model.Location == script_widget.ScriptLocation.Inline)
+{
+    @Html.Raw(code)
+
+    if (renderContext.IsEdit)
+    {
+        string snippet = Regex.Replace(code, @"\s", " ");
+
+        if (snippet.Length > 200)
+        {
+            snippet = snippet.Substring(0, 200) + "...";
+        }
+
+        <code class="editor-code-block">
+            @snippet
+        </code>
+    }
+}

@@ -1,0 +1,12 @@
+body.sf-zone-column #script-wrapper {
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: none !important;
+  max-height: none !important;
+  position: static !important;
+}
+body.sf-zone-column #script-wrapper #script-section-header {
+  display: block !important;
+}
+
+/*# sourceMappingURL=editor-styles.css.map */

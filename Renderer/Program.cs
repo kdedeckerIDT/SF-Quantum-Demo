@@ -18,6 +18,7 @@ using Renderer.Models.LanguageSelector;
 using Renderer.Models.NativeChat;
 using Renderer.Models.Testimonial;
 using Renderer.Models.LoginStatus;
+using script_widget;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,6 +53,7 @@ builder.Services.AddScoped<INativeChatModel, NativeChatModel>();
 builder.Services.AddSingleton<INativeChatClient, NativeChatClient>();
 builder.Services.AddSingleton<IPropertyConfigurator, ExternalPropertyConfigurator>();
 builder.Services.AddScoped<ILoginStatusModel, LoginStatusModel>();
+builder.Services.AddScoped<IScriptRepository, ScriptRepository>();
 
 
 

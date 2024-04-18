@@ -1,0 +1,15 @@
+
+// Styles that should only appear when the user is editing a page
+body.sf-zone-column {
+	& #script-wrapper {
+		visibility: visible!important;
+		opacity: 1!important;
+		max-width: none!important;
+		max-height: none!important;
+		position: static!important;
+
+		& #script-section-header {
+			display: block!important;
+		}
+	}
+}

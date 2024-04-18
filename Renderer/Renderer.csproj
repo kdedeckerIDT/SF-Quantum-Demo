@@ -24,6 +24,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\LanguageSelector\" />
+    <Folder Include="Entities\Script\" />
     <Folder Include="Entities\Testimonial\" />
     <Folder Include="Models\Testimonial\" />
     <Folder Include="ResourcePackages\IDT\ViewComponents\" />
