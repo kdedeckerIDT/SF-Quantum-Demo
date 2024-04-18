@@ -17,8 +17,10 @@
 
     @RenderSection("Top", required: false)
 
-    @* TODO: Minify *@
+    @* Scripts for the OOB Sitefinity widgets *@
     <link rel="stylesheet" href="@Progress.Sitefinity.AspNetCore.Constants.PrefixRendererUrl("styles/main.css")" type="text/css" />
+
+    @* TODO: Minify *@
     <link rel="stylesheet" href="/resourcepackages/idt/assets/css/bootstrap5-idt.css" />
 
     <environment include="Development">

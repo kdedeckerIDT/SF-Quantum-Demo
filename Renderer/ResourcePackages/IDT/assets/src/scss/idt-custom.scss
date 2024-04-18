@@ -2,7 +2,7 @@
 // Configuration
 
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
-@import "../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
     // scss-docs-start color-variables, IDT palette
@@ -92,7 +92,7 @@
 }
 
 @import 'source-scss/base';
-@import 'source-scss/wraps';
+@import 'source-scss/wrappers';
 @import 'source-scss/layout';
 @import 'source-scss/typography';
 @import 'source-scss/template';

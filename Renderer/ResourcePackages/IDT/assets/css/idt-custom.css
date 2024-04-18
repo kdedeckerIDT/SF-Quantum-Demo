@@ -456,6 +456,13 @@ Archer
   }
 }
 
+/* ===================================
+Extensions
+====================================== */
+.full-wrapper {
+  background-color: var(--sf-backgrоund-color);
+}
+
 /*
 =======================================
 FULL-BLEED WRAP BACKGROUNDS AND PADDING

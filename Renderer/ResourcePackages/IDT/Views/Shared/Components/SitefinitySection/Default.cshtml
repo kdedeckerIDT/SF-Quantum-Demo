@@ -1,19 +1,57 @@
 ﻿@using Progress.Sitefinity.AspNetCore.Models
+@using System.Text.RegularExpressions
 @model Progress.Sitefinity.AspNetCore.Widgets.Models.Section.SectionViewModel;
 
-<ul>
-    @if(this.Model.SectionStyle.Length > 0)
+@{
+    var sectionContext = Model.Context;
+    string sectionClasses = (!string.IsNullOrEmpty(this.Model.SectionClasses)) ? this.Model.SectionClasses: "";
+
+    if (!Regex.IsMatch(sectionClasses, @"\bfull-wrapper\b"))
     {
-        <li>@this.Model.SectionStyle</li>
+        sectionClasses = sectionClasses + " row";
     }
     @*
-    @foreach (var style in this.Model.SectionStyle)
+    // Add "row" class to section if no bootstrap container class is found
+    if (!Regex.IsMatch(sectionClasses, @"\bcontainer\b"))
     {
-        <li>@style</li>
+        sectionClasses = sectionClasses + " row";
+    } else
+    {
+        sectionClasses = sectionClasses + " gx-0"; // Since 'container' element will be nested within other rows/columns, need to 0 out gutters
     }
     *@
+}
+
+@* DEBUG PRINT 
+<h3>Section Attributes</h3>
+<ul>
+    @if (!string.IsNullOrEmpty(this.Model.SectionStyle))
+    {
+        <li>SectionStyle:  @this.Model.SectionStyle</li>
+    }
+    @if (!string.IsNullOrEmpty(this.Model.TagName))
+    {
+        <li>TagName:  @this.Model.TagName</li>
+    }
+    @if (this.Model.SectionAttributes != null)
+    {
+        <li>
+            <ul>
+                @foreach (var modelAttribute in this.Model.SectionAttributes)
+                {
+                    <li>@modelAttribute</li>
+                }
+            </ul>
+        </li>
+    }
+    @if (!string.IsNullOrEmpty(this.Model.SectionClasses))
+    {
+        <li>SectionClasses: original = @this.Model.SectionClasses and calculated = @sectionClasses</li>
+    }  
 </ul>
-<sf-wrapper style="@this.Model.SectionStyle" tag-name="@Model.TagName" html-attributes="@Model.SectionAttributes" class="@this.Model.SectionClasses">
+*@
+
+<sf-wrapper style="@this.Model.SectionStyle" tag-name="@Model.TagName" html-attributes="@Model.SectionAttributes" class="@sectionClasses">
     @if (this.Model.ShowVideo && this.Model.VideoUrl != null)
     {
         <div class="sc-video__wrapper">
@@ -23,11 +61,69 @@
         </div>
 
     }
+    
     @for (var i = 0; i < this.Model.ColumnsCount; i++)
     {
-        
-        <div html-attributes="@this.Model.ColumnsAttributes[i]" style="@this.Model.ColumnStyles[i]" class="col-md-@this.Model.ColumnProportions[i] @this.Model.ColumnsClasses[i]" data-sfcontainer container-context="@this.Model.Context.ContainerContext(this.Model.ColumnNames[i], this.Model.ColumnTitles[i])">
-            
-        </div>
+        //col-md-@this.Model.ColumnProportions[i]
+        string columnClasses = (!string.IsNullOrEmpty(this.Model.ColumnsClasses[i])) ? this.Model.ColumnsClasses[i] : "";
+        // Add bootstrap column class
+        columnClasses = (!string.IsNullOrEmpty(this.Model.ColumnProportions[i])) ? columnClasses + " col-md-" + this.Model.ColumnProportions[i] : columnClasses;
+
+        // Remove Bootstrap column classes if Bootstrap 'container' class is present
+        if (columnClasses.Contains("container") && columnClasses.Contains("col-"))
+        {
+            columnClasses = Regex.Replace(columnClasses, @"\bcol-\S\S-\d+\b", "");
+        }
+
+        @* DEBUG PRINT 
+        <h3>Column Attributes</h3>
+        <ul>
+            @if (this.Model.ColumnsAttributes[i] != null)
+            {
+                <li>
+                    <ul>
+                        @foreach (var columnAttribute in this.Model.ColumnsAttributes[i])
+                        {
+                            <li>@columnAttribute</li>
+                        }
+                    </ul>
+                </li>
+            }
+            @if (!string.IsNullOrEmpty(this.Model.ColumnStyles[i]))
+            {
+                <li>ColumnStyles:  @this.Model.ColumnStyles[i]</li>
+            }
+            @if (!string.IsNullOrEmpty(this.Model.ColumnProportions[i]))
+            {
+                <li>ColumnProportions:  @this.Model.ColumnProportions[i]</li>
+            }
+            @if (!string.IsNullOrEmpty(this.Model.ColumnsClasses[i]))
+            {
+                <li>ColumnsClasses:  @this.Model.ColumnsClasses[i]</li>
+            }
+            @{
+                var containerContext = this.Model.Context.ContainerContext(this.Model.ColumnNames[i], this.Model.ColumnTitles[i]);
+            }
+            @if (containerContext != null)
+            {
+                <li><p>ContainerContext</p>
+                    <ul>
+                        <li>@containerContext.PlaceholderName</li>
+                        <li>@containerContext.PlaceholderLabel</li>
+                        <li><p>Child Components:</p>
+                            <ul>
+                                @foreach (var component in containerContext.ChildComponents)
+                                {
+                                    <li>@component.Name</li>
+                                }
+                            </ul>    
+                        </li>
+                    </ul>    
+                </li>
+            }
+        </ul>
+        *@
+        <div html-attributes="@this.Model.ColumnsAttributes[i]" style="@this.Model.ColumnStyles[i]" class="@columnClasses" data-sfcontainer container-context="@this.Model.Context.ContainerContext(this.Model.ColumnNames[i], this.Model.ColumnTitles[i])">
+    </div>
     }
 </sf-wrapper>
